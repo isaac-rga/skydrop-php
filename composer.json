@@ -1,0 +1,14 @@
+{
+    "name": "skydrop/php",
+    "description": "Skydrop Library for PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yaser Almasri",
+            "email": "yaser@masys.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
