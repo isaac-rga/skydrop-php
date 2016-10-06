@@ -2,6 +2,7 @@
     "name": "skydrop/php",
     "description": "Skydrop Library for PHP",
     "type": "library",
+    "version": "1.0.0",
     "license": "MIT",
     "authors": [
         {
@@ -9,13 +10,19 @@
             "email": "yaser@masys.co"
         }
     ],
+    "keywords": [
+      "skydrop",
+      "shipping",
+      "rate"
+    ],
     "minimum-stability": "dev",
     "require": {
         "guzzlehttp/guzzle": "^6.2"
     },
     "autoload": {
       "psr-4": {
-        "": "src"
+        "SkydropAPI\\": "SkydropAPI"
       }
     }
+  }
 }
