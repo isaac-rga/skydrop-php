@@ -1,6 +1,6 @@
 <?php
 
-namespace SkydropAPI;
+namespace Skydrop;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;

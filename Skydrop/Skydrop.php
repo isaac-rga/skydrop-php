@@ -1,6 +1,6 @@
 <?php
 
-namespace SkydropAPI;
+namespace Skydrop;
 
 abstract class Skydrop
 {
