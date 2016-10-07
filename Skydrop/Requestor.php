@@ -2,10 +2,6 @@
 
 namespace Skydrop;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Exception\RequestException;
-
 class Requestor
 {
     public $apiKey;
@@ -14,7 +10,7 @@ class Requestor
 
     public function __construct()
     {
-        $this->apiKey = Skydrop::$apiKey;
+        $this->apiKey = Configs::$apiKey;
     }
 
     public function request($method, $url, $params = [])
@@ -32,7 +28,8 @@ class Requestor
 
     private function getURL($resourceURL)
     {
-        return "{Skydrop::$baseURL()}{$resourceURL}";
+        $baseURL = Configs::baseURL();
+        return "{$baseURL}{$resourceURL}";
     }
 
     private function getHeaders()
@@ -43,6 +40,7 @@ class Requestor
 
         $this->headers = [
             'Authorization' => $this->apiKey,
+            'Content-Type' => 'application/json',
         ];
 
         return $this->headers;

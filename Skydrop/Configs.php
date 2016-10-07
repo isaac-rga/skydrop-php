@@ -2,7 +2,7 @@
 
 namespace Skydrop;
 
-abstract class Skydrop
+abstract class Configs
 {
     const PRODUCTION_URL = 'http://www.skydrop.com.mx/api/v2';
     const STAGING_URL = 'http://54.191.139.107/api/v2';

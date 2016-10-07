@@ -12,8 +12,8 @@ class ShippingRate
         $this->httpClient = new Requestor();
     }
 
-    public static function all($params)
+    public function all($params)
     {
-        return $this->httpClient->request('POST', SELF::ALL_URL, $params);
+        return $this->httpClient->request('POST', self::ALL_URL, $params);
     }
 }
