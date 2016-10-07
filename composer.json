@@ -17,11 +17,12 @@
   ],
   "minimum-stability": "dev",
   "require": {
+    "php": ">=5.5",
     "guzzlehttp/guzzle": "^6.2"
   },
   "autoload": {
     "psr-4": {
-      "SkydropAPI\\": "SkydropAPI"
+      "Skydrop\\": "Skydrop"
     }
   }
 }
