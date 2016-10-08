@@ -1,6 +1,6 @@
 <?php
 
-namespace Skydrop;
+namespace Skydrop\API;
 
 class User
 {
