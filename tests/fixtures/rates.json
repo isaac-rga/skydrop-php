@@ -1,0 +1,94 @@
+{
+  "rates": [
+    {
+      "starting_hour": "16:23",
+      "ending_hour": "17:08",
+      "total_price": "130.31",
+      "service_name": "Ultra Express Motorcycle",
+      "service_code": "EExps",
+      "vehicle_type": "scooter",
+      "currency": "MXN",
+      "subtotal": "112.34"
+    },
+    {
+      "starting_hour": "16:28",
+      "ending_hour": "17:23",
+      "total_price": "159.29",
+      "service_name": "Ultra Express CAR",
+      "service_code": "EExps",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "137.32"
+    },
+    {
+      "starting_hour": "15:00",
+      "ending_hour": "20:00",
+      "total_price": "122.53",
+      "service_name": "Mismo Día CAR",
+      "service_code": "Hoy",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "105.63"
+    },
+    {
+      "starting_hour": "17:00",
+      "ending_hour": "17:50",
+      "total_price": "122.53",
+      "service_name": "Express CAR",
+      "service_code": "Exps",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "105.63"
+    },
+    {
+      "starting_hour": "18:00",
+      "ending_hour": "18:50",
+      "total_price": "220.55",
+      "service_name": "Express CAR",
+      "service_code": "Exps",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "190.13"
+    },
+    {
+      "starting_hour": "19:00",
+      "ending_hour": "19:50",
+      "total_price": "220.55",
+      "service_name": "Express CAR",
+      "service_code": "Exps",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "190.13"
+    },
+    {
+      "starting_hour": "20:00",
+      "ending_hour": "20:50",
+      "total_price": "122.53",
+      "service_name": "Express CAR",
+      "service_code": "Exps",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "105.63"
+    },
+    {
+      "starting_hour": "21:00",
+      "ending_hour": "21:50",
+      "total_price": "122.53",
+      "service_name": "Express CAR",
+      "service_code": "Exps",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "105.63"
+    },
+    {
+      "starting_hour": "10:00",
+      "ending_hour": "22:00",
+      "total_price": "122.53",
+      "service_name": "Siguiente Día CAR",
+      "service_code": "next_day",
+      "vehicle_type": "car",
+      "currency": "MXN",
+      "subtotal": "105.63"
+    }
+  ]
+}
