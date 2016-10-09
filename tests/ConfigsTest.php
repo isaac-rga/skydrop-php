@@ -12,4 +12,3 @@ class ConfigsTest extends TestCase
         $this->assertEquals($apiKey, $actual);
     }
 }
-
