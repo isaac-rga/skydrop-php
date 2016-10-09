@@ -4,6 +4,9 @@ namespace Skydrop\ShippingRate\Modifier;
 
 class ServiceName
 {
+    public $rates;
+    public $shop;
+
     public function __construct($rates = [], $options = array())
     {
         $this->rates = $rates;

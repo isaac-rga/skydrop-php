@@ -4,7 +4,6 @@ namespace Skydrop\ShippingRate\Modifier;
 
 class CodeEncoder
 {
-
     public $rates;
 
     public function __construct($rates = [], $options = array())
