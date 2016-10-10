@@ -1,9 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class OnePerServiceTest extends TestCase
+class CodeEncoderTest extends TestCase
 {
-    public function testReturnSameDayRates()
+    public function testServiceCode()
     {
         $json_rates = file_get_contents(__DIR__.'/../../../fixtures/shipping_rates.json');
         $rates = json_decode($json_rates)->rates;

@@ -39,7 +39,7 @@ class ApplyReducers
                 }
                 $options = ['shipping' => $this->shippingParams];
                 $options = array_merge(
-                    ['shipping' => $this->shippingParams];
+                    ['shipping' => $this->shippingParams],
                     $filter->options
                 );
                 $klass = new $filter->klass($filteredRates, $options);

@@ -5,13 +5,13 @@ namespace Skydrop\ShippingRate\Modifier;
 class ServiceName
 {
     public $rates;
-    public $shop;
+    public $serviceNames;
 
     public function __construct($rates = [], $options = array())
     {
         $this->rates = $rates;
-        if (array_key_exists('shipping', $options)) {
-            $this->shop = $options['shipping']['shop'];
+        if (!empty($options['serviceNames'])) {
+            $this->serviceNames = $options['serviceNames'];
         }
     }
 
@@ -30,10 +30,10 @@ class ServiceName
             return $this->eexpsName($rate);
             break;
         case 'Hoy':
-            return $this->sameDayName;
+            return $this->sameDayName();
             break;
         case 'next_day':
-            return $this->nextDayName;
+            return $this->nextDayName();
             break;
         default:
             return $rate->service_name;
@@ -50,36 +50,29 @@ class ServiceName
         return "Skydrop - Express, te llega antes de las {$this->toAmPm($rate->ending_hour)}{$this->shopServiceName('eexps')}";
     }
 
-    private function nextDayName
+    private function nextDayName()
     {
-        return "Skydrop - Siguiente Día, te llega el día #{$this->nextDayDate} antes de las 10:00 pm{$this->shopServiceName('next_day')}";
+        return "Skydrop - Siguiente Día, te llega el día {$this->nextDayDate()} antes de las 10:00 pm{$this->shopServiceName('next_day')}";
     }
 
     private function toAmPm($timeStr)
     {
-        return DateTime.parse($timeStr).strftime("%I:%M %P");
+        $date = new \DateTime($timeStr, new \DateTimeZone('America/Monterrey'));
+        return $date->format('H:i A');
     }
 
-    private function nextDayDate
+    private function nextDayDate()
     {
-        return I18n.l((Time.zone.now + 1.day), format: :short_date);
+        $date = new \DateTime();
+        $date->setTimezone(new \DateTimeZone('America/Monterrey'));
+        $date->add(new \DateInterval('P1D')); // Add 1 day;
+        return $date->format('D d M');
     }
 
     private function shopServiceName($type)
     {
-        if ($this->rawServiceNames[$type]) {
-            return " ({$this->rawServiceNames[$type]})";
-        } else {
-            return '' ;
-        }
-    }
+        if (empty($this->serviceNames[$type])) { return ''; }
 
-    private function rawServiceNames
-    {
-        if ($this->shop && $this->shop->settings['service_name']) {
-            return $this->shop->settings['service_name'];
-        } else {
-            return [];
-        }
+        return " ({$this->serviceNames[$type]})";
     }
 }

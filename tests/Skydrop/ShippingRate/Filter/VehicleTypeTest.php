@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class OnePerServiceTest extends TestCase
+class VehicleTypeTest extends TestCase
 {
     public function testReturnCarTypeRates()
     {
