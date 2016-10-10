@@ -1,94 +1,40 @@
 {
-  "rates": [
-    {
-      "starting_hour": "16:23",
-      "ending_hour": "17:08",
-      "total_price": "130.31",
-      "service_name": "Ultra Express Motorcycle",
-      "service_code": "EExps",
-      "vehicle_type": "scooter",
-      "currency": "MXN",
-      "subtotal": "112.34"
+  "rate": {
+    "origin": {
+      "country": "MX",
+      "postal_code": "66220",
+      "province": "NL",
+      "city": "San Pedro Garza García",
+      "address1": "Rio Guadalquivir 422-A",
+      "address2": null,
+      "phone": "8140405222"
     },
-    {
-      "starting_hour": "16:28",
-      "ending_hour": "17:23",
-      "total_price": "159.29",
-      "service_name": "Ultra Express CAR",
-      "service_code": "EExps",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "137.32"
+    "destination": {
+      "country": "MX",
+      "postal_code": "66290",
+      "province": "NL",
+      "city": "San Pedro Garza García",
+      "name": "Yaser Almasri",
+      "address1": "rio rosas 404",
+      "address2": "",
+      "phone": ""
     },
-    {
-      "starting_hour": "15:00",
-      "ending_hour": "20:00",
-      "total_price": "122.53",
-      "service_name": "Mismo Día CAR",
-      "service_code": "Hoy",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "105.63"
-    },
-    {
-      "starting_hour": "17:00",
-      "ending_hour": "17:50",
-      "total_price": "122.53",
-      "service_name": "Express CAR",
-      "service_code": "Exps",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "105.63"
-    },
-    {
-      "starting_hour": "18:00",
-      "ending_hour": "18:50",
-      "total_price": "220.55",
-      "service_name": "Express CAR",
-      "service_code": "Exps",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "190.13"
-    },
-    {
-      "starting_hour": "19:00",
-      "ending_hour": "19:50",
-      "total_price": "220.55",
-      "service_name": "Express CAR",
-      "service_code": "Exps",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "190.13"
-    },
-    {
-      "starting_hour": "20:00",
-      "ending_hour": "20:50",
-      "total_price": "122.53",
-      "service_name": "Express CAR",
-      "service_code": "Exps",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "105.63"
-    },
-    {
-      "starting_hour": "21:00",
-      "ending_hour": "21:50",
-      "total_price": "122.53",
-      "service_name": "Express CAR",
-      "service_code": "Exps",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "105.63"
-    },
-    {
-      "starting_hour": "10:00",
-      "ending_hour": "22:00",
-      "total_price": "122.53",
-      "service_name": "Siguiente Día CAR",
-      "service_code": "next_day",
-      "vehicle_type": "car",
-      "currency": "MXN",
-      "subtotal": "105.63"
-    }
-  ]
+    "items": [
+      {
+        "name": "test product",
+        "sku": "",
+        "quantity": 1,
+        "grams": 0,
+        "price": 12300,
+        "vendor": "skydrop-local",
+        "requires_shipping": true,
+        "taxable": true,
+        "fulfillment_service": "manual",
+        "properties": null,
+        "product_id": 7910456769,
+        "variant_id": 25816705921
+      }
+    ],
+    "currency": "MXN"
+  }
 }
