@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "64e4a2a90f5846f03b6c5f4b71298aa4",
-    "content-hash": "d7a26bd988859506a5d7a6dfe7198f71",
+    "hash": "27162d87ed2937bbe1d15da8af005ddc",
+    "content-hash": "89d7aa4cf2d25a2c74f0f177f1fca1a1",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -238,6 +238,65 @@
     ],
     "packages-dev": [
         {
+            "name": "beberlei/assert",
+            "version": "v2.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "ebab3d93e5f8f1ef95e016970ef149b4ad5ac024"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/ebab3d93e5f8f1ef95e016970ef149b4ad5ac024",
+                "reference": "ebab3d93e5f8f1ef95e016970ef149b4ad5ac024",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Assert": "lib/"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "time": "2016-10-03 10:58:03"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "dev-master",
             "source": {
@@ -332,6 +391,55 @@
                 "object graph"
             ],
             "time": "2016-09-16 13:37:59"
+        },
+        {
+            "name": "php-vcr/php-vcr",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-vcr/php-vcr.git",
+                "reference": "0b9774953366e5ecd91524f8641ebe3c37672144"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-vcr/php-vcr/zipball/0b9774953366e5ecd91524f8641ebe3c37672144",
+                "reference": "0b9774953366e5ecd91524f8641ebe3c37672144",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "2.*",
+                "ext-curl": "*",
+                "symfony/event-dispatcher": "~2.1|3.*",
+                "symfony/yaml": "2.*|3.*"
+            },
+            "require-dev": {
+                "lapistano/proxy-object": "dev-master",
+                "mikey179/vfsstream": "1.2.*",
+                "phpunit/phpunit": "3.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Philipp",
+                    "email": "mail@adrian-philipp.com"
+                }
+            ],
+            "description": "Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.",
+            "time": "2016-01-27 10:29:51"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1442,6 +1550,66 @@
             "time": "2016-10-03 07:35:21"
         },
         {
+            "name": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "f6118190787912bc15de082ee9664eb0876a5b8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/f6118190787912bc15de082ee9664eb0876a5b8b",
+                "reference": "f6118190787912bc15de082ee9664eb0876a5b8b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.8|~3.0",
+                "symfony/dependency-injection": "~2.8|~3.0",
+                "symfony/expression-language": "~2.8|~3.0",
+                "symfony/stopwatch": "~2.8|~3.0"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-09-20 15:12:39"
+        },
+        {
             "name": "symfony/yaml",
             "version": "dev-master",
             "source": {
@@ -1502,12 +1670,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "8444f2ac9f86342665cdae47b6d3ea6e07794456"
+                "reference": "1a6cc8d09dd675802ca93de290ac483c10ef95e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/8444f2ac9f86342665cdae47b6d3ea6e07794456",
-                "reference": "8444f2ac9f86342665cdae47b6d3ea6e07794456",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/1a6cc8d09dd675802ca93de290ac483c10ef95e0",
+                "reference": "1a6cc8d09dd675802ca93de290ac483c10ef95e0",
                 "shasum": ""
             },
             "require": {
@@ -1544,7 +1712,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-08-18 09:30:53"
+            "time": "2016-10-10 07:45:47"
         }
     ],
     "aliases": [],
