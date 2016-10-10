@@ -4,9 +4,10 @@ namespace Skydrop\ShippingRate\Service;
 
 class ApplyReducers
 {
-    public $rates;
     public $rawRates;
+
     public $filters;
+
     public $shippingParams;
 
     public function __construct($rawRates = [], $filters = [], $shippingParams = array())
@@ -18,13 +19,13 @@ class ApplyReducers
 
     public function call()
     {
-        if ($this->rates == []) {
+        if (empty($this->rawRates)) {
             return [];
         }
         if ($this->filters == []) {
             return $this->rawRates;
         }
-        return $this->filteredRates()
+        return $this->filteredRates();
     }
 
     private function filteredRates()
@@ -33,14 +34,17 @@ class ApplyReducers
 
         foreach ($this->filters as $filter) {
             try {
-                $klass = $filter->klass;
-                if (!isset($filter->options)) {
-                    $filter->options = {};
+                if (empty($filter->options)) {
+                    $filter->options = [];
                 }
-                $options = [ 'shipping' => $this->shippingParams ];
-                array_merge($options, $filter->options);
-                $filteredRates = (new $klass($filteredRates, $options)).call;
-            } catch (Exception => e) {
+                $options = ['shipping' => $this->shippingParams];
+                $options = array_merge(
+                    ['shipping' => $this->shippingParams];
+                    $filter->options
+                );
+                $klass = new $filter->klass($filteredRates, $options);
+                $filteredRates = $klass->call();
+            } catch (Exception $e) {
                 var_dump($e);
             }
         }
