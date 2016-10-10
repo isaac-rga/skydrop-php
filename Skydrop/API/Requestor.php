@@ -10,7 +10,7 @@ class Requestor
 
     public function __construct()
     {
-        $this->apiKey = Configs::$apiKey;
+        $this->apiKey = \Skydrop\Configs::$apiKey;
     }
 
     public function request($method, $url, $params = [])
@@ -28,7 +28,7 @@ class Requestor
 
     private function getURL($resourceURL)
     {
-        $baseURL = Configs::baseURL();
+        $baseURL = \Skydrop\Configs::baseURL();
         return "{$baseURL}{$resourceURL}";
     }
 
