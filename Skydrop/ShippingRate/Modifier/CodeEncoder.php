@@ -8,18 +8,18 @@ class CodeEncoder
 
     public function __construct($rates = [], $options = array())
     {
-        @rates = $rates
+        $this->rates = $rates;
     }
 
     public function call()
     {
         foreach ($this->rates as $rate) {
-            $rate->service_code = $this->stringified_code(r);
+            $rate->service_code = $this->stringifiedCode($rate);
         }
-        return $rates;
+        return $this->rates;
     }
 
-    private function stringified_code($rate)
+    private function stringifiedCode($rate)
     {
         return json_encode([
             'service_code' => $rate->service_code,

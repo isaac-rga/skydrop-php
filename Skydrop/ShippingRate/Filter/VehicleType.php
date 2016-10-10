@@ -18,7 +18,7 @@ class VehicleType
     {
         $filteredRates = [];
         foreach ($this->rates as $rate) {
-            if (in_array($rate->vehicle_type, $this->vehicleTypes) {
+            if (in_array($rate->vehicle_type, $this->vehicleTypes)) {
                 $filteredRates[] = $rate;
             }
         }
