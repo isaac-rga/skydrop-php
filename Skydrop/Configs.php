@@ -8,6 +8,8 @@ abstract class Configs
     const STAGING_URL = 'http://54.191.139.107/api/v2';
     public static $apiKey;
     public static $env = 'production';
+    public static $openingTime = '10:00';
+    public static $closingTime = '22:00';
     public static $filters = [];
     public static $modifiers = [];
     public static $rules = [];
