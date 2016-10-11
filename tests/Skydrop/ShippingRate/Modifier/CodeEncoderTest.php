@@ -6,7 +6,7 @@ class CodeEncoderTest extends TestCase
     public function testServiceCode()
     {
         $json_rates = file_get_contents(__DIR__.'/../../../fixtures/shipping_rates.json');
-        $rates = json_decode($json_rates)->rates;
+        $rates = json_decode($json_rates);
         $str = json_encode([
             'service_code' => $rates[0]->service_code,
             'vehicle_type' => $rates[0]->vehicle_type,

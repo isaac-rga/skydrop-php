@@ -6,7 +6,7 @@ class OnePerServiceTest extends TestCase
     public function testReturnSameDayRates()
     {
         $json_rates = file_get_contents(__DIR__.'/../../../fixtures/shipping_rates.json');
-        $rates = json_decode($json_rates)->rates;
+        $rates = json_decode($json_rates);
         $klass = new \Skydrop\ShippingRate\Filter\OnePerService(
             $rates, ['serviceTypes' => ['Hoy']]
         );
@@ -18,12 +18,12 @@ class OnePerServiceTest extends TestCase
     public function testReturnAllRates()
     {
         $json_rates = file_get_contents(__DIR__.'/../../../fixtures/shipping_rates.json');
-        $rates = json_decode($json_rates)->rates;
+        $rates = json_decode($json_rates);
         $klass = new \Skydrop\ShippingRate\Filter\OnePerService(
             $rates, ['serviceTypes' => ['Hoy', 'EExps', 'next_day']]
         );
         $newRates = $klass->call();
 
-        $this->assertEquals(count($newRates), 4);
+        $this->assertEquals(count($newRates), 5);
     }
 }
