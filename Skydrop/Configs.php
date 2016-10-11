@@ -7,12 +7,15 @@ abstract class Configs
     const PRODUCTION_URL = 'http://www.skydrop.com.mx/api/v2';
     const STAGING_URL = 'http://54.191.139.107/api/v2';
     public static $apiKey;
-    public static $env = 'production';
-    public static $openingTime = '10:00';
-    public static $closingTime = '22:00';
-    public static $filters = [];
-    public static $modifiers = [];
-    public static $rules = [];
+    public static $env                = 'production';
+    public static $skydropOpeningTime = '10:00';
+    public static $shopServiceTime    = [];
+    public static $filters            = [];
+    public static $modifiers          = [];
+    public static $rules              = [];
+    public static $workingDays        = [];
+    public static $openingTime        = [];
+    public static $closingTime        = [];
 
     public static function setApiKey($newApiKey)
     {
@@ -35,7 +38,7 @@ abstract class Configs
 
     public static function setFilters($filters)
     {
-        self::$filters = $filters;
+        self::$filters = array_merge(self::getDefaultFilters(), $filters);
     }
 
     public static function setModifiers($modifiers)
@@ -46,5 +49,52 @@ abstract class Configs
     public static function setRules($rules)
     {
         self::$rules = $rules;
+    }
+
+    public static function setWorkingDays($wdays)
+    {
+        self::$workingDays = $wdays;
+    }
+
+    public static function setOpeningTime($time)
+    {
+        self::$openingTime = $time;
+    }
+
+    public static function setClosingTime($time)
+    {
+        self::$closingTime = $time;
+    }
+
+    public static function getDefaultFilters()
+    {
+        return [
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\SameDay',
+                'options' => []
+            ),
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\NextDay',
+                'options' => []
+            ),
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\Express',
+                'options' => []
+            ),
+        ];
+    }
+
+    public static function getShopServiceTime()
+    {
+        if (!self::$shopServiceTime) {
+            self::$shopServiceTime = new \Skydrop\ShippingRate\Service\ShopServiceTime(
+                [
+                    'workingDays' => self::$workingDays,
+                    'openingTime' => self::$openingTime,
+                    'closingTime' => self::$closingTime
+                ]
+            );
+        }
+        return self::$shopServiceTime;
     }
 }
