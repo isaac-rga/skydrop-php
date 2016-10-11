@@ -10,9 +10,7 @@ class SameDay
     public function __construct($rates = [], $options = [])
     {
         $this->rates = $rates;
-        if (!empty($options['shopServiceTime'])) {
-            $this->shopServiceTime = $options['shopServiceTime'];
-        }
+        $this->shopServiceTime = \Skydrop\Configs::getShopServiceTime();
     }
 
     public function call()
@@ -48,7 +46,7 @@ class SameDay
 
     private function beforeSkydropTime()
     {
-        $d = new \DateTime(\Skydrop\Configs::$openingTime);
+        $d = new \DateTime(\Skydrop\Configs::$skydropOpeningTime);
         return time() <= $d->getTimestamp();
     }
 }

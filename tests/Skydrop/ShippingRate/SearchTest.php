@@ -5,11 +5,18 @@ class SearchTest extends TestCase
 {
     protected function setUp()
     {
+        date_default_timezone_set('America/Monterrey');
         \Skydrop\Configs::setApiKey('abcdefghijk');
         \Skydrop\Configs::setEnv('staging');
+        \Skydrop\Configs::setWorkingDays([1,2,3,4,5]);
+        \Skydrop\Configs::setOpeningTime(array('hour' => 9, 'min' => 30));
+        \Skydrop\Configs::setClosingTime(array('hour' => 21, 'min' => 30));
 
         $json_rates = file_get_contents(getcwd().'/tests/fixtures/rates.json');
         $this->rates = json_decode($json_rates);
+
+        $new_time = mktime(12, 0, 0, 10, 10, 2016);
+        timecop_freeze($new_time);
     }
 
     public function testCallWithFilters()
@@ -25,7 +32,7 @@ class SearchTest extends TestCase
         \VCR\VCR::insertCassette('shipping_rates');
 
         $result = $search->call();
-        $this->assertEquals(count($result), 1);
+        $this->assertEquals(1, count($result));
         foreach ($result as $rate) {
             $this->assertEquals($rate->service_code, 'Hoy');
             $this->assertEquals($rate->vehicle_type, 'car');
@@ -103,15 +110,11 @@ class SearchTest extends TestCase
         return [
             (object)array(
                 'klass' => '\\Skydrop\\ShippingRate\\Filter\\OnePerService',
-                'options' => [
-                    'serviceTypes' => ['Hoy']
-                ]
+                'options' => [ 'serviceTypes' => ['Hoy'] ]
             ),
             (object)array(
                 'klass' => '\\Skydrop\\ShippingRate\\Filter\\VehicleType',
-                'options' => [
-                    'vehicleTypes' => ['car']
-                ]
+                'options' => [ 'vehicleTypes' => ['car'] ]
             )
         ];
     }
@@ -132,7 +135,6 @@ class SearchTest extends TestCase
 
     private function getRules()
     {
-        return [
-        ];
+        return [ ];
     }
 }

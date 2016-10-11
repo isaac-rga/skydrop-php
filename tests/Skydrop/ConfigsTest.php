@@ -14,10 +14,29 @@ class ConfigsTest extends TestCase
 
     public function testSetFilters()
     {
-        $filters = ['Filter\\OnePerService'];
+        $defaults = [
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\SameDay',
+                'options' => []
+            ),
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\NextDay',
+                'options' => []
+            ),
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\Express',
+                'options' => []
+            )
+        ];
+        $filters = [
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\OnePerService',
+                'options' => []
+            )
+        ];
         \Skydrop\Configs::setFilters($filters);
         $actual = \Skydrop\Configs::$filters;
 
-        $this->assertEquals($filters, $actual);
+        $this->assertEquals(array_merge($defaults, $filters), $actual);
     }
 }

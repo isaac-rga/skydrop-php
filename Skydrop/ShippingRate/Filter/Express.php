@@ -10,7 +10,7 @@ class Express
     public function __construct($rates = [], $options = [])
     {
         $this->rates = $rates;
-        $this->shopServiceTime = $options['shopServiceTime'];
+        $this->shopServiceTime = \Skydrop\Configs::getShopServiceTime();
     }
 
     public function call()
