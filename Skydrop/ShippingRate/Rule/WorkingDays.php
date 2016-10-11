@@ -23,6 +23,6 @@ class WorkingDays
     private function todayWday()
     {
         $d = new \DateTime();
-        return date('N', strtotime($d->format('D')));
+        return (int)$d->format('w');
     }
 }

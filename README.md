@@ -29,7 +29,7 @@ $shippingRate = new Skydrop\ShippingRates();
 $shippingRate->all();
 ```
 
-## Installation
+## Testing
 
 to run testing, install php-timecop:
 ```

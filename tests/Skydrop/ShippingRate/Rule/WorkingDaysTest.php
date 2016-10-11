@@ -5,6 +5,7 @@ class WorkingDaysTest extends TestCase
 {
     public function testInWorkingDays()
     {
+        date_default_timezone_set('America/Monterrey');
         $new_time = mktime(12, 0, 0, 10, 10, 2016);
         timecop_freeze($new_time);
         $workingDays = new \Skydrop\ShippingRate\Rule\WorkingDays(
@@ -15,7 +16,8 @@ class WorkingDaysTest extends TestCase
 
     public function testNotWorkingDays()
     {
-        $new_time = mktime(12, 0, 0, 9, 10, 2016);
+        date_default_timezone_set('America/Monterrey');
+        $new_time = mktime(12, 0, 0, 10, 9, 2016);
         timecop_freeze($new_time);
         $workingDays = new \Skydrop\ShippingRate\Rule\WorkingDays(
             [], [ 'workingDays' => [1,2,3,4,5] ]
