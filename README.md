@@ -23,9 +23,38 @@ Set your Skydrop API key
 
 ```php
 Skydrop\Configs::setApiKey('your_api_key');
+```
+```php
+Skydrop\Configs::setWorkingDays([1,2,3,4,5]); // Moday to Friday.
+Skydrop\Configs::setOpeningTime([ 'hour' => 9, 'min' => 30]); // Your shop opening time.
+Skydrop\Configs::setClosingTime([ 'hour' => 21, 'min' => 30]); // Your shop closin time.
+
+$filters = [
+  (object)array(
+      'klass' => '\\Skydrop\\ShippingRate\\Filter\\OnePerService',
+      'options' => [ 'serviceTypes' => ['Hoy', 'next_day', 'EExps'] ]
+      ),
+  (object)array(
+      'klass' => '\\Skydrop\\ShippingRate\\Filter\\VehicleType',
+      'options' => [ 'vehicleTypes' => ['scooter', 'car', 'van'] ]
+      )
+];
+Skydrop\Configs::setFilters($filters);
+
+$modifiers = [
+  (object)array(
+      'klass' => '\\Skydrop\\ShippingRate\\Modifier\\ServiceName',
+      'options' => [ 'serviceNames' => [
+          'Hoy' => 'your custom message',
+          'next_day' => 'your custom message',
+          'EExps' => 'your custom message'
+      ] ]
+      )
+];
+Skydrop\Configs::setModifier($modifiers);
 
 // Use any of the resources
-$shippingRate = new Skydrop\ShippingRates();
+$shippingRate = new Skydrop\ShippingRates\Search();
 $shippingRate->all();
 ```
 
