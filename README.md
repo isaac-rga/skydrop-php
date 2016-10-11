@@ -25,7 +25,7 @@ Set your Skydrop API key
 Skydrop\Configs::setApiKey('your_api_key');
 ```
 ```php
-Skydrop\Configs::setWorkingDays([1,2,3,4,5]); // Moday to Friday.
+Skydrop\Configs::setWorkingDays([1,2,3,4,5]); // Monday to Friday.
 Skydrop\Configs::setOpeningTime([ 'hour' => 9, 'min' => 30]); // Your shop opening time.
 Skydrop\Configs::setClosingTime([ 'hour' => 21, 'min' => 30]); // Your shop closin time.
 
@@ -54,7 +54,7 @@ $modifiers = [
 Skydrop\Configs::setModifier($modifiers);
 
 // Use any of the resources
-$shippingRate = new Skydrop\ShippingRates\Search();
+$shippingRate = new Skydrop\ShippingRates\Search($items, $rates);
 $shippingRate->all();
 ```
 
