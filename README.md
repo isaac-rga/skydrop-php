@@ -28,6 +28,14 @@ Skydrop\Configs::setApiKey('your_api_key');
 $shippingRate = new Skydrop\ShippingRates();
 $shippingRate->all();
 ```
+
+## Installation
+
+to run testing, install php-timecop:
+```
+https://github.com/hnw/php-timecop
+```
+
 License
 -------
 Developed by [Skydrop](http://www.skydrop.com.mx). Available with [MIT License](LICENSE).
