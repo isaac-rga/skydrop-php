@@ -32,7 +32,7 @@ class SearchTest extends TestCase
         \VCR\VCR::insertCassette('shipping_rates');
 
         $result = $search->call();
-        $this->assertEquals(1, count($result));
+        $this->assertEquals(2, count($result));
         foreach ($result as $rate) {
             $this->assertEquals($rate->service_code, 'Hoy');
             $this->assertEquals($rate->vehicle_type, 'car');
@@ -57,7 +57,7 @@ class SearchTest extends TestCase
 
         $result = $search->call();
         $name = 'Skydrop - Mismo Dia, te llega antes de las 10:00 pm';
-        $this->assertEquals(count($result), 1);
+        $this->assertEquals(2, count($result));
         foreach ($result as $rate) {
             $code = json_encode([
                 'service_code' => 'Hoy',
@@ -89,7 +89,7 @@ class SearchTest extends TestCase
         \VCR\VCR::insertCassette('shipping_rates');
 
         $result = $search->call();
-        $this->assertEquals(count($result), 1);
+        $this->assertEquals(2, count($result));
         foreach ($result as $rate) {
             $code = json_encode([
                 'service_code' => 'Hoy',

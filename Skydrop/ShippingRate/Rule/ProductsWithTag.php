@@ -2,8 +2,13 @@
 
 namespace Skydrop\ShippingRate\Rule;
 
+use Respect\Validation\Validator as v;
+use Respect\Validation\Exceptions\NestedValidationException;
+
 class ProductsWithTag
 {
+    use \Skydrop\Validations\ValidationTrait;
+
     public $items;
     public $tag;
     public $rule;
@@ -11,6 +16,9 @@ class ProductsWithTag
 
     public function __construct($items = [], $options = array())
     {
+        $this->validator = v::attribute('items', v::arrayType()->length(1, null))
+            ->attribute('openingTime', v::arrayType()->length(1, null));
+
         $this->items = $items;
         $this->tag   = $options['tag'];
         $this->rule  = $options['rule'];
@@ -19,6 +27,8 @@ class ProductsWithTag
 
     public function call()
     {
+        $this->validate();
+
         switch ($this->rule) {
         case 'every':
             return $this->every();

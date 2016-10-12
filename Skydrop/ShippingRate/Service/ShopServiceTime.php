@@ -97,7 +97,7 @@ class ShopServiceTime
             $this->openingTime = [ 'hour' => 10, 'min' => 0 ];
         }
         if (empty($this->closingTime)) {
-            $this->closingTime = [ 'hour' => 10, 'min' => 0 ];
+            $this->closingTime = [ 'hour' => 22, 'min' => 0 ];
         }
     }
 }

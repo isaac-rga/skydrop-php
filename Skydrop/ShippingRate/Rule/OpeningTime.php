@@ -2,14 +2,21 @@
 
 namespace Skydrop\ShippingRate\Rule;
 
+use Respect\Validation\Validator as v;
+use Respect\Validation\Exceptions\NestedValidationException;
+
 class OpeningTime
 {
+    use \Skydrop\Validations\ValidationTrait;
+
     public $items;
     public $openingTime;
     private $now;
 
     public function __construct($items = [], $options = array())
     {
+        $this->validator = v::attribute('openingTime', v::arrayType()->length(1, null));
+
         $this->items = $items;
         if (!empty($options['openingTime'])) {
             $this->openingTime = $options['openingTime'];
@@ -19,6 +26,8 @@ class OpeningTime
 
     public function call()
     {
+        $this->validate();
+
         if ($this->afterOpeningHours()) {
             return true;
         }

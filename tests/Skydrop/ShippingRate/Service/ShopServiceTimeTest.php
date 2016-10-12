@@ -6,14 +6,13 @@ class ShopServiceTimeTest extends TestCase
     protected function setUp()
     {
         date_default_timezone_set('America/Monterrey');
-        $this->defaultOptions = [
-            'workingDays' => [1,2,3,4,5],
-            'openingTime' => [ 'hour' => 9, 'min', 30 ],
-            'closingTime' => [ 'hour' => 21, 'min', 30 ]
-        ];
-        $this->serviceTime = new \Skydrop\ShippingRate\Service\ShopServiceTime(
-            $this->defaultOptions
-        );
+        \Skydrop\Configs::setApiKey('abcdefghijk');
+        \Skydrop\Configs::setEnv('staging');
+        \Skydrop\Configs::setWorkingDays([1,2,3,4,5]);
+        \Skydrop\Configs::setOpeningTime(array('hour' => 9, 'min' => 30));
+        \Skydrop\Configs::setClosingTime(array('hour' => 21, 'min' => 30));
+
+        $this->serviceTime = \Skydrop\Configs::getShopServiceTime();
     }
 
     public function testAvailableForSameDay()

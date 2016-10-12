@@ -2,17 +2,26 @@
 
 namespace Skydrop\ShippingRate\Modifier;
 
+use Respect\Validation\Validator as v;
+use Respect\Validation\Exceptions\NestedValidationException;
+
 class CodeEncoder
 {
+    use \Skydrop\Validations\ValidationTrait;
+
     public $rates;
 
     public function __construct($rates = [], $options = array())
     {
+        $this->validator = v::attribute('rates', v::arrayType()->length(1, null));
+
         $this->rates = $rates;
     }
 
     public function call()
     {
+        $this->validate();
+
         foreach ($this->rates as $rate) {
             $rate->service_code = $this->stringifiedCode($rate);
         }

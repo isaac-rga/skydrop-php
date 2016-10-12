@@ -20,6 +20,16 @@ class ExpressTest extends TestCase
             $shipping_rates, []
         );
     }
+
+    public function testException()
+    {
+        $this->expectException(Exception::class);
+        $this->express = new \Skydrop\ShippingRate\Filter\Express(
+            [], []
+        );
+        $this->express->call();
+    }
+
     public function testRejectExpress()
     {
         $new_time = mktime(22, 0, 0, 10, 8, 2016);

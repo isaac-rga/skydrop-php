@@ -2,13 +2,20 @@
 
 namespace Skydrop\ShippingRate\Modifier;
 
+use Respect\Validation\Validator as v;
+use Respect\Validation\Exceptions\NestedValidationException;
+
 class ServiceName
 {
+    use \Skydrop\Validations\ValidationTrait;
+
     public $rates;
     public $serviceNames;
 
     public function __construct($rates = [], $options = array())
     {
+        $this->validator = v::attribute('rates', v::arrayType()->length(1, null));
+
         $this->rates = $rates;
         if (!empty($options['serviceNames'])) {
             $this->serviceNames = $options['serviceNames'];
@@ -17,6 +24,8 @@ class ServiceName
 
     public function call()
     {
+        $this->validate();
+
         foreach ($this->rates as $rate) {
             $rate->service_name = $this->modifiedServiceName($rate);
         }
