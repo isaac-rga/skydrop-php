@@ -14,11 +14,11 @@ abstract class AbstractService
    {
        return array(
            'service' => array(
-               'service_code' => $service->serviceCode(),
-               'vehicle_type' => $service->vehicleType(),
-               'schedule_date' => $service->scheduleDate(),
-               'starting_hour' => $service->startingHour(),
-               'ending_hour' => $service->endingHour(),
+               'service_code'  => $this->serviceCode(),
+               'vehicle_type'  => $this->vehicleType(),
+               'schedule_date' => $this->scheduleDate(),
+               'starting_hour' => $this->startingHour(),
+               'ending_hour'   => $this->endingHour(),
            )
        );
    }
