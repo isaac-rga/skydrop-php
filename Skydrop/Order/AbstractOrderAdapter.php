@@ -4,11 +4,11 @@ namespace Skydrop\Order;
 
 abstract class AbstractOrderAdapter
 {
-    protected $args;
-    protected $origin;
-    protected $destination;
-    protected $service;
-    protected $package;
+    public $args;
+    public $origin;
+    public $destination;
+    public $service;
+    public $package;
 
     abstract protected function originClass();
     abstract protected function destinationClass();
