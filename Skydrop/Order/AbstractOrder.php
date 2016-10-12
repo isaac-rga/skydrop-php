@@ -29,10 +29,10 @@ abstract class AbstractOrder
     public function toHash()
     {
         return array_merge(
-            $pickup->toHash('pickup'),
-            $delivery->toHash('delivery'),
-            $service->toHash(),
-            $package->toHash()
+            $this->pickup->toHash('pickup'),
+            $this->delivery->toHash('delivery'),
+            $this->service->toHash(),
+            $this->package->toHash()
         );
     }
 
