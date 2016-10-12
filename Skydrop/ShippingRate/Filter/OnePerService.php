@@ -5,7 +5,6 @@ namespace Skydrop\ShippingRate\Filter;
 class OnePerService
 {
     public $rates;
-
     public $serviceTypes;
 
     public function __construct($rates = [], $options = array())

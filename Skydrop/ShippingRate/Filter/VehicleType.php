@@ -5,7 +5,6 @@ namespace Skydrop\ShippingRate\Filter;
 class VehicleType
 {
     public $rates;
-
     public $vehicleTypes;
 
     public function __construct($rates = [], $options = array())
