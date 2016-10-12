@@ -26,12 +26,6 @@ abstract class AbstractOrderAdapter
         $this->package = new $packageClass($args);
     }
 
-    private function initAddress($category)
-    {
-        $className = call_user_func(array($this, "{$category}Class"));
-        return new $className($this->args);
-    }
-
     public function toJson()
     {
         return array(
@@ -42,7 +36,14 @@ abstract class AbstractOrderAdapter
         );
     }
 
-    protected function addressHash($address)
+    private function initAddress($category)
+    {
+        $className = call_user_func(array($this, "{$category}Class"));
+        return new $className($this->args);
+    }
+
+
+    private function addressHash($address)
     {
         return array(
             'name' => $address->name(),
@@ -54,7 +55,7 @@ abstract class AbstractOrderAdapter
         );
     }
 
-    protected function serviceHash()
+    private function serviceHash()
     {
         return array(
             'service_code' => $service->serviceCode(),
@@ -65,7 +66,7 @@ abstract class AbstractOrderAdapter
         );
     }
 
-    protected function packageHash()
+    private function packageHash()
     {
         return array(
             'cash_on_delivery' => $package->cashOnDelivery(),
