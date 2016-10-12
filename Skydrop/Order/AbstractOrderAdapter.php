@@ -4,7 +4,7 @@ namespace Skydrop\Order;
 
 abstract class AbstractOrderAdapter
 {
-    public $args;
+    protected $args;
     public $origin;
     public $destination;
     public $service;
