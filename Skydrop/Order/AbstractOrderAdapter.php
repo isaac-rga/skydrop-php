@@ -4,47 +4,70 @@ namespace Skydrop\Order;
 
 abstract class AbstractOrderAdapter
 {
-    protected $pickup;
-    protected $delivery;
-    protected $adaptedPickup;
-    protected $adaptedDelivery;
     protected $args;
+    protected $origin;
+    protected $destination;
+    protected $service;
+    protected $package;
 
-    abstract protected function initPickup();
-    abstract protected function initDelivery();
-    abstract protected function pickupClass();
-    abstract protected function deliveryClass();
-    abstract protected function hasCashOnDelivery();
+    abstract protected function originClass();
+    abstract protected function destinationClass();
+    abstract protected function serviceClass();
+    abstract protected function packageClass();
 
     public function __construct($args)
     {
-        $this->pickup = $this->initPickup($args);
-        $this->delivery = $this->initDelivery($args);
+        $this->args =  $args;
+        $this->origin = initAddress('origin');
+        $this->destination = initAddress('destination');
+        $this->service = new $this->serviceClass($args);
+        $this->package = new $this->packageClass($args);
+    }
+
+    private function initAddress($category)
+    {
+        $className = call_user_func(array($this, "{$category}Class"));
+        return new $className($this->args);
     }
 
     public function toJson()
     {
         return array(
-            'pickup' => adaptedAddress('pickup')->toJson(),
-            'delivery' => adaptedAddress('delivery')->toJson(),
-            'service' => adaptedService()->toJson()
+            'pickup' => addressHash($origin),
+            'delivery' => addressHash($destination),
+            'service' => serviceHash(),
+            'package' => packageHash(),
         );
     }
 
-    protected function adaptedAddress($category)
+    protected function addressHash($address)
     {
-        $adaptedVar = "adapted{ucfirst($category)}";
-        if (isset($this->$adaptedVar)) {
-            return $this->$adaptedVar;
-        }
-
-        return $this->$adaptedVar = address($category);
+        return array(
+            'name' => $address->name(),
+            'email' => $address->email(),
+            'street_name_and_number' => $address->streetNameAndNumber(),
+            'municipality' => $address->municipality(),
+            'neighborhood' => $address->neighborhood(),
+            'telephone' => $address->telephone(),
+        );
     }
 
-    private function address($category)
+    protected function serviceHash()
     {
-        $className = call_user_func(array($this, "{$category}Class"));
-        return new $className($this->$category);
+        return array(
+            'service_code' => $service->serviceCode(),
+            'vehicle_type' => $service->vehicleType(),
+            'schedule_date' => $service->scheduleDate(),
+            'starting_hour' => $service->startingHour(),
+            'ending_hour' => $service->endingHour(),
+        );
     }
 
+    protected function packageHash()
+    {
+        return array(
+            'cash_on_delivery' => $package->cashOnDelivery(),
+            'cod_amount' => $package->codAmount(),
+        );
+    }
 }
