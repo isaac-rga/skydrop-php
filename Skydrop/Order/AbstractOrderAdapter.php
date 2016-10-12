@@ -17,11 +17,13 @@ abstract class AbstractOrderAdapter
 
     public function __construct($args)
     {
+        $serviceClass = $this->serviceClass();
+        $packageClass = $this->packageClass();
         $this->args =  $args;
         $this->origin = initAddress('origin');
         $this->destination = initAddress('destination');
-        $this->service = new $this->serviceClass($args);
-        $this->package = new $this->packageClass($args);
+        $this->service = new $serviceClass($args);
+        $this->package = new $packageClass($args);
     }
 
     private function initAddress($category)
