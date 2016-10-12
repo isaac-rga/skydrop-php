@@ -10,7 +10,7 @@ abstract class AbstractService
    abstract public function startingHour();
    abstract public function endingHour();
 
-   public function toJson()
+   public function toHash()
    {
        return array(
            'service' => array(

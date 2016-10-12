@@ -26,13 +26,13 @@ abstract class AbstractOrder
         $this->package = new $packageClass($args);
     }
 
-    public function toJson()
+    public function toHash()
     {
         return array_merge(
-            $pickup->toJson('pickup'),
-            $delivery->toJson('delivery'),
-            $service->toJson(),
-            $package->toJson()
+            $pickup->toHash('pickup'),
+            $delivery->toHash('delivery'),
+            $service->toHash(),
+            $package->toHash()
         );
     }
 

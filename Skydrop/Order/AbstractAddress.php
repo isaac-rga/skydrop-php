@@ -11,7 +11,7 @@ abstract class AbstractAddress
    abstract public function neighborhood();
    abstract public function telephone();
 
-   public function toJson($rootKey)
+   public function toHash($rootKey)
    {
        return array(
            "{$rootKey}" => array(
