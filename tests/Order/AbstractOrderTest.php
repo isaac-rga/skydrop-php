@@ -2,8 +2,38 @@
 
 use PHPUnit\Framework\TestCase;
 
+class Pickup {}
+class Delivery {}
+class Package {}
+class Service {}
+
 class AbstractPackageTest extends TestCase
 {
+    public function testClassInstantiating()
+    {
+        $stub = $this->getMockBuilder('\Skydrop\Order\AbstractOrder')
+            ->setConstructorArgs([1])
+            ->getMockForAbstractClass();
+
+        $stub->expects($this->any())
+            ->method('pickupClass')
+            ->will($this->returnValue('\Pickup'));
+        $stub->expects($this->any())
+            ->method('deliveryClass')
+            ->will($this->returnValue('\Delivery'));
+        $stub->expects($this->any())
+            ->method('serviceClass')
+            ->will($this->returnValue('\Service'));
+        $stub->expects($this->any())
+            ->method('packageClass')
+            ->will($this->returnValue('\Package'));
+
+        $this->assertInstanceOf(Pickup::class, $stub->pickup);
+        $this->assertInstanceOf(Delivery::class, $stub->delivery);
+        $this->assertInstanceOf(Service::class, $stub->service);
+        $this->assertInstanceOf(Package::class, $stub->package);
+    }
+
     public function testToHash()
     {
         $stub = $this->getMockBuilder('\Skydrop\Order\AbstractOrder')
