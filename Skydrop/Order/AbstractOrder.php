@@ -20,8 +20,8 @@ abstract class AbstractOrder
         $serviceClass = $this->serviceClass();
         $packageClass = $this->packageClass();
         $this->args =  $args;
-        $this->origin = initAddress('pickup');
-        $this->destination = initAddress('delivery');
+        $this->pickup = $this->initAddress('pickup');
+        $this->delivery = $this->initAddress('delivery');
         $this->service = new $serviceClass($args);
         $this->package = new $packageClass($args);
     }
