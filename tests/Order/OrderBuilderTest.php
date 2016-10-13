@@ -7,11 +7,11 @@ class Delivery {}
 class Package {}
 class Service {}
 
-class AbstractPackageTest extends TestCase
+class OrderBuilderTest extends TestCase
 {
     public function testClassInstantiating()
     {
-        $stub = $this->getMockBuilder('\Skydrop\Order\AbstractOrder')
+        $stub = $this->getMockBuilder('\Skydrop\Order\OrderBuilder')
             ->setConstructorArgs([1])
             ->getMockForAbstractClass();
 
@@ -36,7 +36,7 @@ class AbstractPackageTest extends TestCase
 
     public function testToHash()
     {
-        $stub = $this->getMockBuilder('\Skydrop\Order\AbstractOrder')
+        $stub = $this->getMockBuilder('\Skydrop\Order\OrderBuilder')
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $stub->pickup = $this->getStdStub();
