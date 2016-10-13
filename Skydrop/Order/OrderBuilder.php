@@ -6,11 +6,18 @@ class OrderBuilder
 {
     use \Skydrop\Traits\GettersAndSettersTrait;
 
-    protected $args;
-    private   $pickup;
-    private   $delivery;
-    private   $service;
-    private   $package;
+    private $pickup;
+    private $delivery;
+    private $service;
+    private $package;
+
+    public function __construct($pickup, $delivery, $service, $package)
+    {
+        $this->pickup   = $pickup;
+        $this->delivery = $delivery;
+        $this->service  = $service;
+        $this->package  = $package;
+    }
 
     public function toHash()
     {

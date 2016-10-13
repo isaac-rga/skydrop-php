@@ -9,49 +9,23 @@ class Service {}
 
 class OrderBuilderTest extends TestCase
 {
-    public function testClassInstantiating()
-    {
-        $stub = $this->getMockBuilder('\Skydrop\Order\OrderBuilder')
-            ->setConstructorArgs([1])
-            ->getMockForAbstractClass();
-
-        $stub->expects($this->any())
-            ->method('pickupClass')
-            ->will($this->returnValue('\Pickup'));
-        $stub->expects($this->any())
-            ->method('deliveryClass')
-            ->will($this->returnValue('\Delivery'));
-        $stub->expects($this->any())
-            ->method('serviceClass')
-            ->will($this->returnValue('\Service'));
-        $stub->expects($this->any())
-            ->method('packageClass')
-            ->will($this->returnValue('\Package'));
-
-        $this->assertInstanceOf(Pickup::class, $stub->pickup);
-        $this->assertInstanceOf(Delivery::class, $stub->delivery);
-        $this->assertInstanceOf(Service::class, $stub->service);
-        $this->assertInstanceOf(Package::class, $stub->package);
-    }
-
     public function testToHash()
     {
-        $stub = $this->getMockBuilder('\Skydrop\Order\OrderBuilder')
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-        $stub->pickup = $this->getStdStub();
-        $stub->delivery = $this->getStdStub();
-        $stub->package = $this->getStdStub();
-        $stub->service = $this->getStdStub();
-
-        $expected = array_merge(
-            $stub->pickup->toHash(),
-            $stub->delivery->toHash(),
-            $stub->package->toHash(),
-            $stub->service->toHash()
+        $order = new \Skydrop\Order\OrderBuilder(
+            $this->getStdStub(),
+            $this->getStdStub(),
+            $this->getStdStub(),
+            $this->getStdStub()
         );
 
-        $this->assertSame($stub->toHash(), $expected);
+        $expected = array_merge(
+            $order->getPickup()->toHash(),
+            $order->getDelivery()->toHash(),
+            $order->getPackage()->toHash(),
+            $order->getService()->toHash()
+        );
+
+        $this->assertSame($order->toHash(), $expected);
     }
 
     private function getStdStub()
