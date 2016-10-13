@@ -7,7 +7,12 @@ class Package
     use \Skydrop\Traits\GettersAndSettersTrait;
 
     private $codAmount;
-    private $needsCashOnDelivery;
+
+    public function __construct($args=[])
+    {
+        var_dump($args);
+        $this->codAmount = array_key_exists('codAmount', $args) ? $args['codAmount'] : '';
+    }
 
     public function toHash()
     {
