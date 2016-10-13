@@ -12,6 +12,15 @@ class Service
     private $startingHour;
     private $endingHour;
 
+    public function __construct($args)
+    {
+        $this->serviceCode  = $this->getFromArray('serviceCode', $args, '');
+        $this->vehicleType  = $this->getFromArray('vehicleType', $args, '');
+        $this->scheduleDate = $this->getFromArray('scheduleDate', $args, '');
+        $this->startingHour = $this->getFromArray('startingHour', $args, '');
+        $this->endingHour   = $this->getFromArray('endingHour', $args, '');
+    }
+
     public function toHash()
     {
         return array(
