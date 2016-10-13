@@ -12,8 +12,20 @@ class Address
     private $address2;
     private $city;
     private $province;
-    private $zipCode;
+    private $postal_code;
     private $country;
+
+    public function __construct($args=[])
+    {
+        $this->name     = $this->getFromArray('name', $args, '');
+        $this->phone    = $this->getFromArray('phone', $args, '');
+        $this->address1 = $this->getFromArray('address1', $args, '');
+        $this->address2 = $this->getFromArray('address2', $args, '');
+        $this->city     = $this->getFromArray('city', $args, '');
+        $this->province = $this->getFromArray('province', $args, '');
+        $this->postal_code = $this->getFromArray('postal_code', $args, '');
+        $this->country  = $this->getFromArray('country', $args, '');
+    }
 
     public function toHash($rootKey)
     {
@@ -25,7 +37,7 @@ class Address
                 'address2'    => $this->address2,
                 'city'        => $this->city,
                 'province'    => $this->province,
-                'postal_code' => $this->zipCode,
+                'postal_code' => $this->postal_code,
                 'country'     => $this->country
             )
         );
