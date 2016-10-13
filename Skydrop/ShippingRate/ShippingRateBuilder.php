@@ -2,7 +2,7 @@
 
 namespace Skydrop\ShippingRate;
 
-class ShippingRate
+class ShippingRateBuilder
 {
     use \Skydrop\Traits\GettersAndSettersTrait;
 

@@ -1,11 +1,11 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class ShippingRateTest extends TestCase
+class ShippingRateBuilderTest extends TestCase
 {
     public function testToHash()
     {
-        $shippingRate = new \Skydrop\ShippingRate\ShippingRate(
+        $shippingRate = new \Skydrop\ShippingRate\ShippingRateBuilder(
             [
                 'origin' => $this->getStdStub(),
                 'destination' => $this->getStdStub()

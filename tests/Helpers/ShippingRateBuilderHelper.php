@@ -9,7 +9,7 @@ class ShippingRateBuilderHelper
 
     public function getShippingRateBuilder()
     {
-        return new Skydrop\ShippingRate\ShippingRate(
+        return new Skydrop\ShippingRate\ShippingRateBuilder(
             [
                 'origin' => $this->getOrigin(),
                 'destination' => $this->getDestination(),
