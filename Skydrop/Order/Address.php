@@ -13,6 +13,16 @@ class Address
     private $neighborhood;
     private $telephone;
 
+    public function __construct($args=[])
+    {
+        $this->name = $this->getFromArray('name', $args, '');
+        $this->email = $this->getFromArray('email', $args, '');
+        $this->streetNameAndNumber = $this->getFromArray('streetNameAndNumber', $args, '');
+        $this->municipality = $this->getFromArray('municipality', $args, '');
+        $this->neighborhood = $this->getFromArray('neighborhood', $args, '');
+        $this->telephone = $this->getFromArray('telephone', $args, '');
+    }
+
     public function toHash($rootKey)
     {
         return array(

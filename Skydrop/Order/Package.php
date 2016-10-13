@@ -10,7 +10,7 @@ class Package
 
     public function __construct($args=[])
     {
-        $this->codAmount = array_key_exists('codAmount', $args) ? $args['codAmount'] : '';
+        $this->codAmount = $this->getFromArray('codAmount', $args, '');
     }
 
     public function toHash()

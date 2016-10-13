@@ -6,13 +6,16 @@ class AddressTest extends TestCase
 {
     public function testToHash()
     {
-        $stub = $this->getMock('\Skydrop\Order\AbstractAddress');
-        $stub->setName('juan rdz');
-        $stub->setEmail('juan@gmail.com');
-        $stub->serStreetNameAndNumber('rio rosas 101');
-        $stub->setMunicipality('san pedro');
-        $stub->setNeighborhood('del valle');
-        $stub->setTelephone('81149090');
+        $address = new \Skydrop\Order\Address(
+            [
+                'name' => 'juan rdz',
+                'email' => 'juan@gmail.com',
+                'streetNameAndNumber' => 'rio rosas 101',
+                'municipality' => 'san pedro',
+                'neighborhood' => 'del valle',
+                'telephone' => '81149090',
+            ]
+        );
 
         $this->assertSame([
             'pickup' => [
@@ -23,6 +26,6 @@ class AddressTest extends TestCase
                 'neighborhood' => 'del valle',
                 'telephone' => '81149090',
             ],
-        ], $stub->toHash('pickup'));
+        ], $address->toHash('pickup'));
     }
 }
