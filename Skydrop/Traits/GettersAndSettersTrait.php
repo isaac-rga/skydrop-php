@@ -1,4 +1,7 @@
 <?php
+
+namespace Skydrop\Traits;
+
 trait GettersAndSettersTrait
 {
    function __call($method, $params) {

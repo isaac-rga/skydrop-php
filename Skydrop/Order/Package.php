@@ -10,7 +10,6 @@ class Package
 
     public function __construct($args=[])
     {
-        var_dump($args);
         $this->codAmount = array_key_exists('codAmount', $args) ? $args['codAmount'] : '';
     }
 
