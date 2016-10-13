@@ -12,10 +12,12 @@ class OrderBuilderTest extends TestCase
     public function testToHash()
     {
         $order = new \Skydrop\Order\OrderBuilder(
-            $this->getStdStub(),
-            $this->getStdStub(),
-            $this->getStdStub(),
-            $this->getStdStub()
+            [
+                'pickup'   => $this->getStdStub(),
+                'delivery' => $this->getStdStub(),
+                'service'  => $this->getStdStub(),
+                'package'  => $this->getStdStub()
+            ]
         );
 
         $expected = array_merge(

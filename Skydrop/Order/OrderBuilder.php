@@ -13,10 +13,10 @@ class OrderBuilder
 
     public function __construct($args=[])
     {
-        $this->pickup   = $args['pickup'];
-        $this->delivery = $args['delivery'];
-        $this->service  = $args['service'];
-        $this->package  = $args['package'];
+        $this->pickup   = $this->getFromArray('pickup', $args, '');
+        $this->delivery = $this->getFromArray('delivery', $args, '');
+        $this->service  = $this->getFromArray('service', $args, '');
+        $this->package  = $this->getFromArray('package', $args, '');
     }
 
     public function toHash()
