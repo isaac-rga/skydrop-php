@@ -14,10 +14,10 @@ class Search
 
     public $rules;
 
-    public function __construct($items = [], $shipping = [])
+    public function __construct($shippingRate)
     {
-        $this->itemsParams    = $items;
-        $this->shippingParams = $shipping;
+        $this->itemsParams    = $shippingRate->items;
+        $this->shippingParams = $shippingRate;
         $this->filters        = \Skydrop\Configs::$filters;
         $this->modifiers      = \Skydrop\Configs::$modifiers;
         $this->rules          = \Skydrop\Configs::$rules;
@@ -25,13 +25,9 @@ class Search
 
     public function call()
     {
-        if (!$this->orderEligible()) {
-            return [];
-        }
+        if (!$this->orderEligible()) { return []; }
         $foundRates = $this->getRawRates();
-        if (empty($foundRates)) {
-            return [];
-        }
+        if (empty($foundRates)) { return []; }
 
         return $this->applyModifiers($this->applyFilters($foundRates));
     }
@@ -45,9 +41,7 @@ class Search
                 try {
                     $klass = new $rate->klass($this->itemsParams, $rate->options);
                     return $klass->call();
-                } catch (Exception $e) {
-                    return true;
-                }
+                } catch (Exception $e) { return true; }
             },
             $this->rules
         );
@@ -58,17 +52,15 @@ class Search
     public function getRawRates()
     {
         try {
-            $klass = new \Skydrop\API\ShippingRate();
+            $klass    = new \Skydrop\API\ShippingRate();
             $response = $klass->all($this->shippingParams);
-            $rates = $response->rates;
+            $rates    = $response->rates;
             if (empty($rates)) {
                 return [];
             } else {
                 return $rates;
             }
-        } catch (Exception $e) {
-            return [];
-        }
+        } catch (Exception $e) { return []; }
     }
 
     private function applyModifiers($rates)
