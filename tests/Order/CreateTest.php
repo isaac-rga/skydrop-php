@@ -1,8 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+require_once 'tests/Helpers/OrdersHelper.php';
 
-class AddressTest extends TestCase
+class CreateTest extends TestCase
 {
     public function setUp()
     {
@@ -16,7 +17,8 @@ class AddressTest extends TestCase
     {
         \VCR\VCR::insertCassette('create_order_success');
 
-        $order = $this->getValidOrder();
+        $orderHelper = new \OrdersHelper();
+        $order = $orderHelper->getValidOrder();
         $this->assertTrue(\Skydrop\Order\Create::call($order));
 
         \VCR\VCR::eject();
@@ -27,18 +29,11 @@ class AddressTest extends TestCase
     {
         \VCR\VCR::insertCassette('create_order_fail');
 
-        $order = $this->getInvalidOrder();
-        $this->assertTrue(\Skydrop\Order\Create::call($order));
+        $orderHelper = new \OrdersHelper();
+        $order = $orderHelper->getInvalidOrder();
+        $this->assertNotTrue(\Skydrop\Order\Create::call($order));
 
         \VCR\VCR::eject();
         \VCR\VCR::turnOff();
-    }
-
-    private function getInvalidOrder()
-    {
-    }
-
-    private function getValidOrder()
-    {
     }
 }

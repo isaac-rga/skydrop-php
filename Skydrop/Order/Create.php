@@ -10,7 +10,7 @@ class Create
             $order = new \Skydrop\API\Order();
             $order->create($orderBuilder->toHash());
             return true;
-        } catch (Exception $e) {
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
             return false;
         }
     }
