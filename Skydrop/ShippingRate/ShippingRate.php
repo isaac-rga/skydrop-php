@@ -6,15 +6,20 @@ class ShippingRate
 {
     use \Skydrop\Traits\GettersAndSettersTrait;
 
-    protected $args;
     private   $origin;
     private   $destination;
     private   $items;
 
+    public function __construct($args=[])
+    {
+        $this->origin      = $this->getFromArray('origin', $args, '');
+        $this->destination = $this->getFromArray('destination', $args, '');
+    }
+
     public function toHash()
     {
         return array(
-            'rate' => array(
+            'rate' => array_merge(
                 $this->origin->toHash('origin'),
                 $this->destination->toHash('destination')
             )

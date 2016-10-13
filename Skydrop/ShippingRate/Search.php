@@ -16,8 +16,8 @@ class Search
 
     public function __construct($shippingRate)
     {
-        $this->itemsParams    = $shippingRate->items;
-        $this->shippingParams = $shippingRate;
+        $this->itemsParams    = $shippingRate->getItems();
+        $this->shippingParams = $shippingRate->toHash();
         $this->filters        = \Skydrop\Configs::$filters;
         $this->modifiers      = \Skydrop\Configs::$modifiers;
         $this->rules          = \Skydrop\Configs::$rules;

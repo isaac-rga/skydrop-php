@@ -1,5 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
+require_once 'tests/Helpers/ShippingRateBuilderHelper.php';
 
 class SearchTest extends TestCase
 {
@@ -12,8 +13,8 @@ class SearchTest extends TestCase
         \Skydrop\Configs::setOpeningTime(array('hour' => 9, 'min' => 30));
         \Skydrop\Configs::setClosingTime(array('hour' => 21, 'min' => 30));
 
-        $json_rates = file_get_contents(getcwd().'/tests/fixtures/rates.json');
-        $this->rates = json_decode($json_rates);
+        $shippingRateHelper = new \ShippingRateBuilderHelper();
+        $this->builder = $shippingRateHelper->getShippingRateBuilder();
 
         $new_time = mktime(12, 0, 0, 10, 10, 2016);
         timecop_freeze($new_time);
@@ -23,16 +24,14 @@ class SearchTest extends TestCase
     {
         \Skydrop\Configs::setFilters($this->getFilters());
 
-        $search = new \Skydrop\ShippingRate\Search(
-            $this->rates->rate->items, $this->rates
-        );
+        $search = new \Skydrop\ShippingRate\Search($this->builder);
 
         \VCR\VCR::configure()->setCassettePath(getcwd().'/tests/VCR');
         \VCR\VCR::turnOn();
         \VCR\VCR::insertCassette('shipping_rates');
 
         $result = $search->call();
-        $this->assertEquals(2, count($result));
+        $this->assertEquals(1, count($result));
         foreach ($result as $rate) {
             $this->assertEquals($rate->service_code, 'Hoy');
             $this->assertEquals($rate->vehicle_type, 'car');
@@ -47,9 +46,7 @@ class SearchTest extends TestCase
         \Skydrop\Configs::setFilters($this->getFilters());
         \Skydrop\Configs::setModifiers($this->getModifiers());
 
-        $search = new \Skydrop\ShippingRate\Search(
-            $this->rates->rate->items, $this->rates
-        );
+        $search = new \Skydrop\ShippingRate\Search($this->builder);
 
         \VCR\VCR::configure()->setCassettePath(getcwd().'/tests/VCR');
         \VCR\VCR::turnOn();
@@ -57,7 +54,7 @@ class SearchTest extends TestCase
 
         $result = $search->call();
         $name = 'Skydrop - Mismo Dia, te llega antes de las 10:00 pm';
-        $this->assertEquals(2, count($result));
+        $this->assertEquals(1, count($result));
         foreach ($result as $rate) {
             $code = json_encode([
                 'service_code' => 'Hoy',
@@ -80,16 +77,14 @@ class SearchTest extends TestCase
         \Skydrop\Configs::setModifiers($this->getModifiers());
         \Skydrop\Configs::setRules($this->getRules());
 
-        $search = new \Skydrop\ShippingRate\Search(
-            $this->rates->rate->items, $this->rates
-        );
+        $search = new \Skydrop\ShippingRate\Search($this->builder);
 
         \VCR\VCR::configure()->setCassettePath(getcwd().'/tests/VCR');
         \VCR\VCR::turnOn();
         \VCR\VCR::insertCassette('shipping_rates');
 
         $result = $search->call();
-        $this->assertEquals(2, count($result));
+        $this->assertEquals(1, count($result));
         foreach ($result as $rate) {
             $code = json_encode([
                 'service_code' => 'Hoy',
