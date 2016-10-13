@@ -4,7 +4,14 @@ namespace Skydrop\Order;
 
 class Create
 {
-    public function call()
+    public static function call($orderBuilder)
     {
+        try {
+            $order = new \Skydrop\API\Order();
+            $order->create($orderBuilder->toHash());
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
