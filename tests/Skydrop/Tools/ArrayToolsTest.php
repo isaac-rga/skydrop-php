@@ -1,7 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class ConfigsTest extends TestCase
+require_once 'Skydrop/Tools/ArrayTools.php';
+
+class ArrayToolsTest extends TestCase
 {
     public function testMergeArrayOfObjectsByKey()
     {
@@ -34,8 +36,9 @@ class ConfigsTest extends TestCase
             )
         ];
 
-        $arrayTool = new \Skydrop\Tools\ArrayTools($myArray);
-        $arrayTool->mergeArrayOfObjectsByKey($defaultArray, 'klass');
-        $this->assertSame($expectedArray, $arrayTool->getIterator());
+        $this->assertEquals(
+            $expectedArray,
+            mergeArrayByKey($defaultArray, $myArray, 'klass')
+        );
     }
 }

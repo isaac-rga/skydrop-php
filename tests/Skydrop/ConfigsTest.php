@@ -26,7 +26,7 @@ class ConfigsTest extends TestCase
             (object)array(
                 'klass' => '\\Skydrop\\ShippingRate\\Filter\\Express',
                 'options' => []
-            )
+            ),
         ];
         $filters = [
             (object)array(
@@ -35,8 +35,8 @@ class ConfigsTest extends TestCase
             )
         ];
         \Skydrop\Configs::setFilters($filters);
-        $actual = \Skydrop\Configs::$filters;
+        $actual = \Skydrop\Configs::getFilters();
 
-        $this->assertEquals(array_merge($defaults, $filters), $actual);
+        $this->assertEquals(array_merge($filters, $defaults), $actual);
     }
 }

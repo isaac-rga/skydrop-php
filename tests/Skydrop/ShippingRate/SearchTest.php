@@ -33,7 +33,6 @@ class SearchTest extends TestCase
         $result = $search->call();
         $this->assertEquals(1, count($result));
         foreach ($result as $rate) {
-            $this->assertEquals($rate->service_code, 'Hoy');
             $this->assertEquals($rate->vehicle_type, 'car');
         }
 
@@ -44,7 +43,6 @@ class SearchTest extends TestCase
     public function testCallWithModifiers()
     {
         \Skydrop\Configs::setFilters($this->getFilters());
-        \Skydrop\Configs::setModifiers($this->getModifiers());
 
         $search = new \Skydrop\ShippingRate\Search($this->builder);
 
@@ -74,7 +72,6 @@ class SearchTest extends TestCase
     public function testCallWithRules()
     {
         \Skydrop\Configs::setFilters($this->getFilters());
-        \Skydrop\Configs::setModifiers($this->getModifiers());
         \Skydrop\Configs::setRules($this->getRules());
 
         $search = new \Skydrop\ShippingRate\Search($this->builder);
@@ -110,20 +107,6 @@ class SearchTest extends TestCase
             (object)array(
                 'klass' => '\\Skydrop\\ShippingRate\\Filter\\VehicleType',
                 'options' => [ 'vehicleTypes' => ['car'] ]
-            )
-        ];
-    }
-
-    private function getModifiers()
-    {
-        return [
-            (object)array(
-                'klass' => '\\Skydrop\\ShippingRate\\Modifier\\ServiceName',
-                'options' => []
-            ),
-            (object)array(
-                'klass' => '\\Skydrop\\ShippingRate\\Modifier\\CodeEncoder',
-                'options' => []
             )
         ];
     }
