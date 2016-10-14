@@ -70,6 +70,10 @@ abstract class Configs
     {
         return [
             (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Filter\\VehicleType',
+                'options' => [ 'vehicleTypes' => ['car'] ]
+            ),
+            (object)array(
                 'klass' => '\\Skydrop\\ShippingRate\\Filter\\SameDay',
                 'options' => []
             ),
