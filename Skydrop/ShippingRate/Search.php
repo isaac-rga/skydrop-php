@@ -25,23 +25,31 @@ class Search
 
     public function call()
     {
-        if (!$this->orderEligible()) { return []; }
-        $foundRates = $this->getRawRates();
-        if (empty($foundRates)) { return []; }
+        try {
+            if (!$this->orderEligible()) {
+                return [];
+            }
+            $foundRates = $this->getRawRates();
+            if (empty($foundRates)) {
+                return [];
+            }
 
-        return $this->applyModifiers($this->applyFilters($foundRates));
+            return $this->applyModifiers($this->applyFilters($foundRates));
+        } catch (Exception $e) {
+            return [];
+        }
     }
 
     private function orderEligible()
     {
-        if (empty($this->rules)) { return true; }
+        if (empty($this->rules)) {
+            return true;
+        }
 
         $rules = array_map(
             function($rate) {
-                try {
-                    $klass = new $rate->klass($this->itemsParams, $rate->options);
-                    return $klass->call();
-                } catch (Exception $e) { return true; }
+                $klass = new $rate->klass($this->itemsParams, $rate->options);
+                return $klass->call();
             },
             $this->rules
         );
@@ -51,16 +59,14 @@ class Search
 
     public function getRawRates()
     {
-        try {
-            $klass    = new \Skydrop\API\ShippingRate();
-            $response = $klass->all($this->shippingParams);
-            $rates    = $response->rates;
-            if (empty($rates)) {
-                return [];
-            } else {
-                return $rates;
-            }
-        } catch (Exception $e) { return []; }
+        $klass    = new \Skydrop\API\ShippingRate();
+        $response = $klass->all($this->shippingParams);
+        $rates    = $response->rates;
+        if (empty($rates)) {
+            return [];
+        } else {
+            return $rates;
+        }
     }
 
     private function applyModifiers($rates)
