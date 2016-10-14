@@ -38,7 +38,7 @@ abstract class Configs
 
     public static function setFilters($filters)
     {
-        self::$filters = array_merge(self::getDefaultFilters(), $filters);
+        self::$filters = $filters;
     }
 
     public static function setModifiers($modifiers)
@@ -84,6 +84,20 @@ abstract class Configs
         ];
     }
 
+    public static function getDefaultModifiers()
+    {
+        return [
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Modifier\\ServiceName',
+                'options' => []
+            ),
+            (object)array(
+                'klass' => '\\Skydrop\\ShippingRate\\Modifier\\CodeEncoder',
+                'options' => []
+            )
+        ];
+    }
+
     public static function getShopServiceTime()
     {
         if (!self::$shopServiceTime) {
@@ -96,5 +110,11 @@ abstract class Configs
             );
         }
         return self::$shopServiceTime;
+    }
+
+    public static function getFilters()
+    {
+        $arrayTool = new \Skydrop\Tools\ArrayTools(self::$filters);
+        return $arrayTools->mergeArrayOfObjectsByKey(self::getDefaultFilters());
     }
 }
