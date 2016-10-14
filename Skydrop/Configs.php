@@ -73,7 +73,7 @@ abstract class Configs
         return [
             (object)array(
                 'klass' => '\\Skydrop\\ShippingRate\\Filter\\OnePerService',
-                'options' => [ 'serviceTypes' => ['next_day'] ]
+                'options' => [ 'serviceTypes' => ['Hoy', 'EExps', 'next_day'] ]
             ),
             (object)array(
                 'klass' => '\\Skydrop\\ShippingRate\\Filter\\VehicleType',

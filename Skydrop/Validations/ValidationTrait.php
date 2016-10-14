@@ -10,10 +10,9 @@ trait ValidationTrait
     {
         if (!$this->validator->validate($this)) {
             try {
-                $this->validator->assert('Validations Error!');
-            } catch(NestedValidationException $exception) {
-                throw new \Exception($exception->getFullMessage());
-                // print_r($exception->getMessages());
+                $this->validator->assert(get_class($this));
+            } catch(NestedValidationException $e) {
+                throw new \Exception($e->getFullMessage());
             }
         }
     }

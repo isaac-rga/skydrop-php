@@ -35,7 +35,7 @@ class Search
             }
 
             return $this->applyModifiers($this->applyFilters($foundRates));
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return [];
         }
     }

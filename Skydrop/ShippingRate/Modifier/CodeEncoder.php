@@ -23,7 +23,7 @@ class CodeEncoder
         $this->validate();
 
         foreach ($this->rates as $rate) {
-            $rate->service_code = $this->stringifiedCode($rate);
+            $rate->service_code = urlencode($this->stringifiedCode($rate));
         }
         return $this->rates;
     }
