@@ -26,7 +26,7 @@ class ShopServiceTime
     {
         switch ($serviceType) {
         case 'express':
-            return $this->opened() && !$this->closed();
+            return $this->inWorkingDays() && $this->opened() && !$this->closed();
         case 'next_day':
             return $this->openTomorrow();
         default:

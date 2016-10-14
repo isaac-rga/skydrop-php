@@ -35,7 +35,7 @@ class Express
         $this->rates = array_filter(
             $this->rates,
             function($rate) {
-                return $rate->service_code != 'express';
+                return $rate->service_code != 'EExps';
             }
         );
     }
