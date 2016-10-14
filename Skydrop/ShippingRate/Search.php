@@ -18,8 +18,8 @@ class Search
     {
         $this->itemsParams    = $shippingRate->getItems();
         $this->shippingParams = $shippingRate->toHash();
-        $this->filters        = \Skydrop\Configs::$filters;
-        $this->modifiers      = \Skydrop\Configs::$modifiers;
+        $this->filters        = \Skydrop\Configs::getFilters();
+        $this->modifiers      = \Skydrop\Configs::getModifiers();
         $this->rules          = \Skydrop\Configs::$rules;
     }
 

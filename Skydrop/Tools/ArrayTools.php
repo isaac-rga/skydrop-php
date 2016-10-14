@@ -1,40 +1,21 @@
 <?php
 
-namespace Skydrop\Tools;
-
-class ArrayTools implements \IteratorAggregate
+function mergeArrayByKey($array1, $array2, $key)
 {
-    private $array;
+    $keys = array_map(function($el) use ($key) { return $el->$key; }, $array2);
+    $missing = arrayDiffByKey($array1, $key, $keys);
 
-    public function __construct(array $array)
-    {
-        $this->array = $array;
-    }
+    return array_merge($array2, $missing);
+}
 
-    public function mergeArrayOfObjectsByKey(array $objects, $key)
-    {
-        $arrayKeys = $this->_getArrayKeys($key);
-        $uniqObjects = array_filter(
-            $objects,
-            function($o) use ($key, $arrayKeys) {
-                if (!in_array($o->$key, $arrayKeys)) {
-                    return $o;
-                }
+function arrayDiffByKey($array1, $key, $keys)
+{
+    return array_filter(
+        $array1,
+        function($el) use ($key, $keys) {
+            if (!in_array($el->$key, $keys)) {
+                return $el;
             }
-        );
-        $this->array = array_merge($this->array, $uniqObjects);
-    }
-
-    private function _getArrayKeys($key)
-    {
-        return array_map(
-            function($a) use ($key) { return $a->$key; },
-            $this->array
-        );
-    }
-
-    public function getIterator()
-    {
-        return new \ArrayIterator($this->array);
-    }
+        }
+    );
 }
