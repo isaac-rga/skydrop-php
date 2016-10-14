@@ -114,7 +114,15 @@ abstract class Configs
 
     public static function getFilters()
     {
-        $arrayTool = new \Skydrop\Tools\ArrayTools(self::$filters);
-        return $arrayTools->mergeArrayOfObjectsByKey(self::getDefaultFilters());
+        return mergeArrayByKey(
+            self::getDefaultFilters(), self::$filters, 'klass'
+        );
+    }
+
+    public static function getModifiers()
+    {
+        return mergeArrayByKey(
+            self::getDefaultModifiers(), self::$modifiers, 'klass'
+        );
     }
 }
