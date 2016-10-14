@@ -2,6 +2,8 @@
 
 namespace Skydrop;
 
+require_once 'Tools/ArrayTools.php';
+
 abstract class Configs
 {
     const PRODUCTION_URL = 'http://www.skydrop.com.mx/api/v2';
