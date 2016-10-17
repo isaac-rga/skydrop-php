@@ -44,6 +44,7 @@ class CodeEncoder
         if ($rate->service_code == 'next_day') {
             return $this->_getNextDayDate();
         }
+        return $this->_getSameDayDate();
     }
 
     private function _getNextDayDate()
