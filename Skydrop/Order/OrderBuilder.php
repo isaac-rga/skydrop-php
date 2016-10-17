@@ -21,11 +21,17 @@ class OrderBuilder
 
     public function toHash()
     {
-        return array_merge(
+        $array = array_merge(
             $this->pickup->toHash('pickup'),
             $this->delivery->toHash('delivery'),
-            $this->service->toHash(),
-            $this->package->toHash()
+            $this->service->toHash()
         );
+        if (!empty($this->package)) {
+            $array = array_merge(
+                $array,
+                $this->package->toHash()
+            );
+        }
+        return $array;
     }
 }
