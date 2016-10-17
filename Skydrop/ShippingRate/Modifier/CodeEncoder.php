@@ -41,9 +41,10 @@ class CodeEncoder
 
     private function _getScheduleDate($rate)
     {
-        if ($rate->service_code == 'next_day') {
-            return $this->_getNextDayDate();
-        }
+        // commented to fix bug in Skydrop server
+        // if ($rate->service_code == 'next_day') {
+        //     return $this->_getNextDayDate();
+        // }
         return $this->_getSameDayDate();
     }
 
