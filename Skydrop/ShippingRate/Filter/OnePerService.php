@@ -30,6 +30,7 @@ class OnePerService
             foreach ($this->rates as $rate) {
                 if ($rate->service_code == $serviceType) {
                     $filteredRates[] = $rate;
+                    break 1;
                 }
             }
         }

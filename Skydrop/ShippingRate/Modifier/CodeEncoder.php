@@ -31,10 +31,33 @@ class CodeEncoder
     private function stringifiedCode($rate)
     {
         return json_encode([
-            'service_code' => $rate->service_code,
-            'vehicle_type' => $rate->vehicle_type,
+            'service_code'  => $rate->service_code,
+            'vehicle_type'  => $rate->vehicle_type,
+            'schedule_date' => $this->_getScheduleDate($rate),
             'starting_hour' => $rate->starting_hour,
-            'ending_hour' => $rate->ending_hour
+            'ending_hour'   => $rate->ending_hour
         ]);
+    }
+
+    private function _getScheduleDate($rate)
+    {
+        if ($rate->service_code == 'next_day') {
+            return $this->_getNextDayDate();
+        }
+    }
+
+    private function _getNextDayDate()
+    {
+        $date = new \DateTime();
+        $date->setTimezone(new \DateTimeZone('America/Monterrey'));
+        $date->add(new \DateInterval('P1D')); // Add 1 day;
+        return $date->format('Y-m-d');
+    }
+
+    private function _getSameDayDate()
+    {
+        $date = new \DateTime();
+        $date->setTimezone(new \DateTimeZone('America/Monterrey'));
+        return $date->format('Y-m-d');
     }
 }
