@@ -25,6 +25,9 @@
     "phpunit/phpunit": "5.5.*",
     "php-vcr/php-vcr": "^1.2"
   },
+  "config": {
+    "preferred-install": "dist"
+  },
   "autoload": {
     "psr-4": {
       "Skydrop\\": "Skydrop"
