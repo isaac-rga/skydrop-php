@@ -10,6 +10,7 @@ abstract class Configs
     const STAGING_URL = 'http://54.191.139.107/api/v2';
     public static $apiKey;
     public static $env                = 'production';
+    public static $slackHook          = 'https://hooks.slack.com/services/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';
     public static $skydropOpeningTime = '10:00';
     public static $shopServiceTime    = [];
     public static $filters            = [];
@@ -134,5 +135,32 @@ abstract class Configs
         return mergeArrayByKey(
             self::getDefaultModifiers(), self::$modifiers, 'klass'
         );
+    }
+
+    public static function notifyErrbit($e, $params = array())
+    {
+        \Errbit\Errbit::instance()
+            ->configure(array(
+                'api_key' => 'b63effbcb994cd467a7bc94771b5096f',
+                'host'    => 'errbit-skydrop.herokuapp.com'
+            ))
+            ->start();
+        if (empty($params)) {
+            \Errbit\Errbit::instance()->notify($e);
+        } else {
+            \Errbit\Errbit::instance()->notify($e, $params);
+        }
+    }
+
+    public static function notifySlack($message)
+    {
+        $settings = [
+            'username' => 'Skydrop PHP SDK',
+            'channel' => '#exceptions',
+            'link_names' => true
+        ];
+
+        $client = new \Maknz\Slack\Client(self::$slackHook, $settings);
+        $client->send($message);
     }
 }

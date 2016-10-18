@@ -45,7 +45,7 @@ class ApplyReducers
                 $klass = new $filter->klass($filteredRates, $options);
                 $filteredRates = $klass->call();
             } catch (Exception $e) {
-                var_dump($e);
+                \Skydrop\Configs::notifyErrbit($e);
             }
         }
 

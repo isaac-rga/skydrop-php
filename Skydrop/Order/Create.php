@@ -11,6 +11,8 @@ class Create
             $order->create($orderBuilder->toHash());
             return true;
         } catch (\GuzzleHttp\Exception\ClientException $e) {
+            \Skydrop\Configs::notifyErrbit($e, $orderBuilder->toHash());
+            \Skydrop\Configs::notifySlack($e->getMessage());
             return false;
         }
     }
