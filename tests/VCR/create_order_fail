@@ -18,14 +18,14 @@
             code: '422'
             message: 'Unprocessable Entity'
         headers:
-            Date: 'Tue, 18 Oct 2016 19:21:11 GMT'
+            Date: 'Tue, 18 Oct 2016 19:29:49 GMT'
             Server: 'Apache/2.4.7 (Ubuntu)'
             Cache-Control: no-cache
-            X-Runtime: '0.031036'
+            X-Runtime: '0.029184'
             X-Frame-Options: SAMEORIGIN
             X-XSS-Protection: '1; mode=block'
             X-Content-Type-Options: nosniff
-            X-Request-Id: b4bb8fc0-f53a-473c-bc3f-4a4240545e3d
+            X-Request-Id: 2a166626-0349-4da9-b179-e104e5879c79
             X-Powered-By: 'Phusion Passenger 5.0.18'
             Set-Cookie: 'request_method=POST; path=/'
             Status: '422 Unprocessable Entity'
@@ -43,7 +43,7 @@
             Accept-Encoding: null
             User-Agent: 'GuzzleHttp/6.2.1 curl/7.43.0 PHP/7.1.0RC3'
             Accept: null
-        body: '{"text":"Client error: `POST http:\/\/54.191.139.107\/api\/v2\/orders` resulted in a `422 Unprocessable Entity` response:\n{\"errors\":\"Recolección no esta dentro de la zona de cobertura.\"}\n","channel":"#exceptions","username":"Skydrop PHP SDK","link_names":1,"unfurl_links":false,"unfurl_media":true,"mrkdwn":true,"attachments":[]}'
+        body: '{"text":"{\"pickup\":{\"name\":\"\",\"email\":\"\",\"street_name_and_number\":\"\",\"municipality\":\"\",\"neighborhood\":\"\",\"telephone\":\"\"},\"delivery\":{\"name\":\"\",\"email\":\"\",\"street_name_and_number\":\"\",\"municipality\":\"\",\"neighborhood\":\"\",\"telephone\":\"\"},\"service\":{\"service_code\":\"\",\"vehicle_type\":\"\",\"schedule_date\":\"\",\"starting_hour\":\"\",\"ending_hour\":\"\"},\"package\":{\"cash_on_delivery\":\"true\",\"cod_amount\":\"\"}}","channel":"#exceptions","username":"Skydrop PHP SDK","link_names":1,"unfurl_links":false,"unfurl_media":true,"mrkdwn":true,"attachments":[]}'
     response:
         status:
             http_version: '1.1'
@@ -55,13 +55,13 @@
             Connection: keep-alive
             Access-Control-Allow-Origin: '*'
             Content-Security-Policy: 'referrer no-referrer;'
-            Date: 'Tue, 18 Oct 2016 19:21:22 GMT'
+            Date: 'Tue, 18 Oct 2016 19:30:00 GMT'
             Server: Apache
             Strict-Transport-Security: 'max-age=31536000; includeSubDomains; preload'
             Vary: Accept-Encoding
             X-Frame-Options: SAMEORIGIN
             X-Slack-Backend: h
             X-Cache: 'Miss from cloudfront'
-            Via: '1.1 f1eb65075eb33821f0876ba367843bcc.cloudfront.net (CloudFront)'
-            X-Amz-Cf-Id: wpUtiw9E2I_faMUmZgtBPwBS06ic2k70SJlMTSQoDbIc4WIHX_5kqw==
+            Via: '1.1 ad75de90472243324ece0502a7c0229f.cloudfront.net (CloudFront)'
+            X-Amz-Cf-Id: xffKxSl6WsC-x8U9_jB_CIIgOVxkeqyME9yOnpa5GMM6Lagyr4SsEg==
         body: ok
