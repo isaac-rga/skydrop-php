@@ -148,7 +148,10 @@ abstract class Configs
         if (empty($params)) {
             \Errbit\Errbit::instance()->notify($e);
         } else {
-            \Errbit\Errbit::instance()->notify($e, $params);
+            \Errbit\Errbit::instance()->notify(
+                $e,
+                ['parameters' => $params]
+            );
         }
     }
 

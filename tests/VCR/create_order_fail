@@ -11,74 +11,6 @@
             Content-Type: application/json
             User-Agent: 'GuzzleHttp/6.2.1 curl/7.43.0 PHP/7.1.0RC3'
             Accept: null
-        body: '{"pickup":{"name":"juan pablo","email":"pjuan@gmail.com","street_name_and_number":"rio guadalquivir 422","municipality":"san pedro","neighborhood":"del valle","telephone":"81818181818"},"delivery":{"name":"juan rdz","email":"juan@gmail.com","street_name_and_number":"rio rosas 101","municipality":"san pedro","neighborhood":"del valle","telephone":"81149090"},"service":{"service_code":"Hoy","vehicle_type":"car","schedule_date":"2016-10-10","starting_hour":"10:00","ending_hour":"22:00"},"package":{"cash_on_delivery":"true","cod_amount":""}}'
-    response:
-        status:
-            http_version: '1.1'
-            code: '201'
-            message: Created
-        headers:
-            Date: 'Thu, 13 Oct 2016 21:14:27 GMT'
-            Server: 'Apache/2.4.7 (Ubuntu)'
-            Cache-Control: 'max-age=0, private, must-revalidate'
-            X-Frame-Options: SAMEORIGIN
-            X-XSS-Protection: '1; mode=block'
-            X-Content-Type-Options: nosniff
-            X-Runtime: '0.167152'
-            X-Request-Id: ff39386f-7c21-4c49-a6ff-c7547796cd4e
-            X-Powered-By: 'Phusion Passenger 5.0.18'
-            Set-Cookie: 'request_method=POST; path=/'
-            ETag: '"3df09edda6d6bc7cf25f0c99de05e755"'
-            Status: '201 Created'
-            Transfer-Encoding: chunked
-            Content-Type: 'application/json; charset=utf-8'
-        body: '{"ticket":"S111859","tracking_url":"http://www.skydrop.com.mx/track/NjEwMTIxMDg0MTM="}'
--
-    request:
-        method: POST
-        url: 'http://54.191.139.107/api/v2/orders'
-        headers:
-            Host: 54.191.139.107
-            Expect: null
-            Accept-Encoding: null
-            Authorization: abcdefghijk
-            Content-Type: application/json
-            User-Agent: 'GuzzleHttp/6.2.1 curl/7.43.0 PHP/7.1.0RC3'
-            Accept: null
-        body: '{"pickup":{"name":"juan pablo","email":"pjuan@gmail.com","street_name_and_number":"rio guadalquivir 422","municipality":"san pedro","neighborhood":"del valle","telephone":"81818181818"},"delivery":{"name":"juan pablo","email":"pjuan@gmail.com","street_name_and_number":"rio guadalquivir 422","municipality":"san pedro","neighborhood":"del valle","telephone":"81818181818"},"service":{"service_code":"Hoy","vehicle_type":"car","schedule_date":"2016-10-10","starting_hour":"10:00","ending_hour":"22:00"},"package":{"cash_on_delivery":"true","cod_amount":""}}'
-    response:
-        status:
-            http_version: '1.1'
-            code: '201'
-            message: Created
-        headers:
-            Date: 'Thu, 13 Oct 2016 21:33:56 GMT'
-            Server: 'Apache/2.4.7 (Ubuntu)'
-            Cache-Control: 'max-age=0, private, must-revalidate'
-            X-Frame-Options: SAMEORIGIN
-            X-XSS-Protection: '1; mode=block'
-            X-Content-Type-Options: nosniff
-            X-Runtime: '0.108736'
-            X-Request-Id: cef46496-aed4-4d9c-95b3-e2aa51821172
-            X-Powered-By: 'Phusion Passenger 5.0.18'
-            Set-Cookie: 'request_method=POST; path=/'
-            ETag: '"5f05e209d11c61bfc507b1f29cbc70b1"'
-            Status: '201 Created'
-            Transfer-Encoding: chunked
-            Content-Type: 'application/json; charset=utf-8'
-        body: '{"ticket":"S111861","tracking_url":"http://www.skydrop.com.mx/track/NjEwMTIxMDg0NDE="}'
--
-    request:
-        method: POST
-        url: 'http://54.191.139.107/api/v2/orders'
-        headers:
-            Host: 54.191.139.107
-            Expect: null
-            Accept-Encoding: null
-            Authorization: abcdefghijk
-            Content-Type: application/json
-            User-Agent: 'GuzzleHttp/6.2.1 curl/7.43.0 PHP/7.1.0RC3'
-            Accept: null
         body: '{"pickup":{"name":"","email":"","street_name_and_number":"","municipality":"","neighborhood":"","telephone":""},"delivery":{"name":"","email":"","street_name_and_number":"","municipality":"","neighborhood":"","telephone":""},"service":{"service_code":"","vehicle_type":"","schedule_date":"","starting_hour":"","ending_hour":""},"package":{"cash_on_delivery":"true","cod_amount":""}}'
     response:
         status:
@@ -86,53 +18,20 @@
             code: '422'
             message: 'Unprocessable Entity'
         headers:
-            Date: 'Thu, 13 Oct 2016 21:37:17 GMT'
+            Date: 'Tue, 18 Oct 2016 19:21:11 GMT'
             Server: 'Apache/2.4.7 (Ubuntu)'
             Cache-Control: no-cache
-            X-Runtime: '0.054230'
+            X-Runtime: '0.031036'
             X-Frame-Options: SAMEORIGIN
             X-XSS-Protection: '1; mode=block'
             X-Content-Type-Options: nosniff
-            X-Request-Id: 9ca8898b-c7bd-4036-a5e8-d31f72bccac5
+            X-Request-Id: b4bb8fc0-f53a-473c-bc3f-4a4240545e3d
             X-Powered-By: 'Phusion Passenger 5.0.18'
             Set-Cookie: 'request_method=POST; path=/'
             Status: '422 Unprocessable Entity'
             Transfer-Encoding: chunked
             Content-Type: 'application/json; charset=utf-8'
         body: '{"errors":"Recolección no esta dentro de la zona de cobertura."}'
--
-    request:
-        method: POST
-        url: 'https://hooks.slack.com/services/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'
-        headers:
-            Host: hooks.slack.com
-            Expect: null
-            Content-Type: null
-            Accept-Encoding: null
-            User-Agent: 'GuzzleHttp/6.2.1 curl/7.43.0 PHP/7.1.0RC3'
-            Accept: null
-        body: '{"text":{"xdebug_message":"\nGuzzleHttp\\Exception\\ClientException: Client error: `POST http:\/\/54.191.139.107\/api\/v2\/orders` resulted in a `422 Unprocessable Entity` response:\n{\"errors\":\"Recolección no esta dentro de la zona de cobertura.\"}\n in \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/RequestException.php on line 111\n\nCall Stack:\n    0.0098     822632   1. {main}() \/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar:0\n    0.0751    8897856   2. PHPUnit_TextUI_Command->main() \/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar:569\n    0.0751    8897968   3. PHPUnit_TextUI_Command->run() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/TextUI\/Command.php:115\n    0.0817    9478096   4. PHPUnit_TextUI_TestRunner->doRun() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/TextUI\/Command.php:185\n    0.0855    9482224   5. PHPUnit_Framework_TestSuite->run() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/TextUI\/TestRunner.php:465\n    0.1285   11259112   6. PHPUnit_Framework_TestCase->run() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestSuite.php:753\n    0.1285   11259112   7. PHPUnit_Framework_TestResult->run() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestCase.php:892\n    0.1285   11259112   8. PHPUnit_Framework_TestCase->runBare() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestResult.php:701\n    0.1290   11286712   9. PHPUnit_Framework_TestCase->runTest() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestCase.php:936\n    0.1290   11287008  10. ReflectionMethod->invokeArgs() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestCase.php:1085\n    0.1290   11287016  11. CreateTest->testCallReturnFail() phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestCase.php:1085\n    0.1292   11289920  12. Skydrop\\Order\\Create->call() \/Users\/yaser\/dev\/skydrop\/skydrop-php\/tests\/Skydrop\/Order\/CreateTest.php:34\n    0.1292   11291952  13. Skydrop\\API\\Order->create() \/Users\/yaser\/dev\/skydrop\/skydrop-php\/Skydrop\/Order\/Create.php:11\n    0.1292   11291952  14. Skydrop\\API\\Requestor->request() \/Users\/yaser\/dev\/skydrop\/skydrop-php\/Skydrop\/API\/Order.php:31\n    0.1293   11298656  15. GuzzleHttp\\Client->request() \/Users\/yaser\/dev\/skydrop\/skydrop-php\/Skydrop\/API\/Requestor.php:23\n    0.1501   11351072  16. GuzzleHttp\\Promise\\Promise->wait() \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/guzzle\/src\/Client.php:129\n"},"channel":"#exceptions","username":"Skydrop PHP SDK","link_names":1,"unfurl_links":false,"unfurl_media":true,"mrkdwn":true,"attachments":[]}'
-    response:
-        status:
-            http_version: '1.1'
-            code: '500'
-            message: 'Server Error'
-        headers:
-            Content-Type: text/html
-            Content-Length: '39'
-            Connection: keep-alive
-            Access-Control-Allow-Origin: '*'
-            Content-Security-Policy: 'referrer no-referrer;'
-            Date: 'Tue, 18 Oct 2016 16:43:44 GMT'
-            Server: Apache
-            Strict-Transport-Security: 'max-age=31536000; includeSubDomains; preload'
-            Vary: Accept-Encoding
-            X-Frame-Options: SAMEORIGIN
-            X-Slack-Backend: h
-            X-Cache: 'Error from cloudfront'
-            Via: '1.1 06d9d20554cae38082b4c9c28ae9df68.cloudfront.net (CloudFront)'
-            X-Amz-Cf-Id: oyfo807YNag4W5cp_x7PYhcBO9WthNRcXXHniOZmvyXqXGg0NSl-Kw==
-        body: missing_text_or_fallback_or_attachments
 -
     request:
         method: POST
@@ -156,46 +55,13 @@
             Connection: keep-alive
             Access-Control-Allow-Origin: '*'
             Content-Security-Policy: 'referrer no-referrer;'
-            Date: 'Tue, 18 Oct 2016 16:44:14 GMT'
+            Date: 'Tue, 18 Oct 2016 19:21:22 GMT'
             Server: Apache
             Strict-Transport-Security: 'max-age=31536000; includeSubDomains; preload'
             Vary: Accept-Encoding
             X-Frame-Options: SAMEORIGIN
             X-Slack-Backend: h
             X-Cache: 'Miss from cloudfront'
-            Via: '1.1 0459f84cfc86cb6f46c44cb1d0a8bdc0.cloudfront.net (CloudFront)'
-            X-Amz-Cf-Id: r5KFX96K1f9x9iy5cV1MazjsCsmtYPZCbADY6aRG0pXpUW7jx2ALUg==
-        body: ok
--
-    request:
-        method: POST
-        url: 'https://hooks.slack.com/services/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'
-        headers:
-            Host: hooks.slack.com
-            Expect: null
-            Content-Type: null
-            Accept-Encoding: null
-            User-Agent: 'GuzzleHttp/6.2.1 curl/7.43.0 PHP/7.1.0RC3'
-            Accept: null
-        body: '{"text":"#0 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/guzzle\/src\/Middleware.php(65): GuzzleHttp\\Exception\\RequestException::create(Object(GuzzleHttp\\Psr7\\Request), Object(GuzzleHttp\\Psr7\\Response))\n#1 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/Promise.php(203): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Response))\n#2 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/Promise.php(156): GuzzleHttp\\Promise\\Promise::callHandler(1, Object(GuzzleHttp\\Psr7\\Response), Array)\n#3 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/TaskQueue.php(61): GuzzleHttp\\Promise\\Promise::GuzzleHttp\\Promise\\{closure}()\n#4 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/Promise.php(246): GuzzleHttp\\Promise\\TaskQueue->run(true)\n#5 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/Promise.php(223): GuzzleHttp\\Promise\\Promise->invokeWaitFn()\n#6 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/Promise.php(266): GuzzleHttp\\Promise\\Promise->waitIfPending()\n#7 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/Promise.php(225): GuzzleHttp\\Promise\\Promise->invokeWaitList()\n#8 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/promises\/src\/Promise.php(62): GuzzleHttp\\Promise\\Promise->waitIfPending()\n#9 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/vendor\/guzzlehttp\/guzzle\/src\/Client.php(129): GuzzleHttp\\Promise\\Promise->wait()\n#10 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/Skydrop\/API\/Requestor.php(23): GuzzleHttp\\Client->request(''POST'', ''http:\/\/54.191.1...'', Array)\n#11 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/Skydrop\/API\/Order.php(31): Skydrop\\API\\Requestor->request(''POST'', ''\/orders'', Array)\n#12 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/Skydrop\/Order\/Create.php(11): Skydrop\\API\\Order->create(Array)\n#13 \/Users\/yaser\/dev\/skydrop\/skydrop-php\/tests\/Skydrop\/Order\/CreateTest.php(34): Skydrop\\Order\\Create::call(Object(Skydrop\\Order\\OrderBuilder))\n#14 [internal function]: CreateTest->testCallReturnFail()\n#15 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestCase.php(1085): ReflectionMethod->invokeArgs(Object(CreateTest), Array)\n#16 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestCase.php(936): PHPUnit_Framework_TestCase->runTest()\n#17 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestResult.php(701): PHPUnit_Framework_TestCase->runBare()\n#18 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestCase.php(892): PHPUnit_Framework_TestResult->run(Object(CreateTest))\n#19 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/Framework\/TestSuite.php(753): PHPUnit_Framework_TestCase->run(Object(PHPUnit_Framework_TestResult))\n#20 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/TextUI\/TestRunner.php(465): PHPUnit_Framework_TestSuite->run(Object(PHPUnit_Framework_TestResult))\n#21 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/TextUI\/Command.php(185): PHPUnit_TextUI_TestRunner->doRun(Object(PHPUnit_Framework_TestSuite), Array, true)\n#22 phar:\/\/\/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar\/phpunit\/TextUI\/Command.php(115): PHPUnit_TextUI_Command->run(Array, true)\n#23 \/usr\/local\/Cellar\/phpunit\/5.5.4\/libexec\/phpunit-5.5.4.phar(569): PHPUnit_TextUI_Command::main()\n#24 {main}","channel":"#exceptions","username":"Skydrop PHP SDK","link_names":1,"unfurl_links":false,"unfurl_media":true,"mrkdwn":true,"attachments":[]}'
-    response:
-        status:
-            http_version: '1.1'
-            code: '200'
-            message: OK
-        headers:
-            Content-Type: text/html
-            Content-Length: '2'
-            Connection: keep-alive
-            Access-Control-Allow-Origin: '*'
-            Content-Security-Policy: 'referrer no-referrer;'
-            Date: 'Tue, 18 Oct 2016 16:46:12 GMT'
-            Server: Apache
-            Strict-Transport-Security: 'max-age=31536000; includeSubDomains; preload'
-            Vary: Accept-Encoding
-            X-Frame-Options: SAMEORIGIN
-            X-Slack-Backend: h
-            X-Cache: 'Miss from cloudfront'
-            Via: '1.1 8d2276a2558f7b7b8d52ea6b2a3f0ba9.cloudfront.net (CloudFront)'
-            X-Amz-Cf-Id: vwoGFFG3TOdDLBl8PUqmxYKhpU0ChaItssDE9oE0FPVny4oqwUZ79g==
+            Via: '1.1 f1eb65075eb33821f0876ba367843bcc.cloudfront.net (CloudFront)'
+            X-Amz-Cf-Id: wpUtiw9E2I_faMUmZgtBPwBS06ic2k70SJlMTSQoDbIc4WIHX_5kqw==
         body: ok
