@@ -178,12 +178,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "a0d75173c8553b4281c8319333d9ee90e4656ed1"
+            "reference": "9061956e6ad81cc90e7f36d54f2eaa944ae74065"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a0d75173c8553b4281c8319333d9ee90e4656ed1",
-            "reference": "a0d75173c8553b4281c8319333d9ee90e4656ed1",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9061956e6ad81cc90e7f36d54f2eaa944ae74065",
+            "reference": "9061956e6ad81cc90e7f36d54f2eaa944ae74065",
             "shasum": ""
         },
         "require": {
@@ -196,7 +196,7 @@
             "phpunit/phpunit": "^4.0",
             "psr/log": "^1.0"
         },
-        "time": "2016-09-22 14:23:55",
+        "time": "2016-10-13 05:38:46",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -483,12 +483,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
-            "reference": "f6118190787912bc15de082ee9664eb0876a5b8b"
+            "reference": "e8f47a327c2f0fd5aa04fa60af2b693006ed7283"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/f6118190787912bc15de082ee9664eb0876a5b8b",
-            "reference": "f6118190787912bc15de082ee9664eb0876a5b8b",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/e8f47a327c2f0fd5aa04fa60af2b693006ed7283",
+            "reference": "e8f47a327c2f0fd5aa04fa60af2b693006ed7283",
             "shasum": ""
         },
         "require": {
@@ -505,7 +505,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-        "time": "2016-09-20 15:12:39",
+        "time": "2016-10-13 06:29:04",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -539,79 +539,18 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "beberlei/assert",
-        "version": "v2.6.4",
-        "version_normalized": "2.6.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/beberlei/assert.git",
-            "reference": "ebab3d93e5f8f1ef95e016970ef149b4ad5ac024"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/beberlei/assert/zipball/ebab3d93e5f8f1ef95e016970ef149b4ad5ac024",
-            "reference": "ebab3d93e5f8f1ef95e016970ef149b4ad5ac024",
-            "shasum": ""
-        },
-        "require": {
-            "ext-mbstring": "*",
-            "php": ">=5.3"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "@stable"
-        },
-        "time": "2016-10-03 10:58:03",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Assert": "lib/"
-            },
-            "files": [
-                "lib/Assert/functions.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-2-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Richard Quadling",
-                "email": "rquadling@gmail.com",
-                "role": "Collaborator"
-            }
-        ],
-        "description": "Thin assertion library for input validation in business models.",
-        "keywords": [
-            "assert",
-            "assertion",
-            "validation"
-        ]
-    },
-    {
         "name": "php-vcr/php-vcr",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/php-vcr/php-vcr.git",
-            "reference": "0b9774953366e5ecd91524f8641ebe3c37672144"
+            "reference": "cdb28c1c481ecf61a8726075dc4e76487936981c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-vcr/php-vcr/zipball/0b9774953366e5ecd91524f8641ebe3c37672144",
-            "reference": "0b9774953366e5ecd91524f8641ebe3c37672144",
+            "url": "https://api.github.com/repos/php-vcr/php-vcr/zipball/cdb28c1c481ecf61a8726075dc4e76487936981c",
+            "reference": "cdb28c1c481ecf61a8726075dc4e76487936981c",
             "shasum": ""
         },
         "require": {
@@ -625,7 +564,7 @@
             "mikey179/vfsstream": "1.2.*",
             "phpunit/phpunit": "3.*"
         },
-        "time": "2016-01-27 10:29:51",
+        "time": "2016-10-17 13:26:51",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1006,12 +945,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/webmozart/assert.git",
-            "reference": "1a6cc8d09dd675802ca93de290ac483c10ef95e0"
+            "reference": "c0c92082a2ffef8fab7941d4f6fd6a6a72ed627c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webmozart/assert/zipball/1a6cc8d09dd675802ca93de290ac483c10ef95e0",
-            "reference": "1a6cc8d09dd675802ca93de290ac483c10ef95e0",
+            "url": "https://api.github.com/repos/webmozart/assert/zipball/c0c92082a2ffef8fab7941d4f6fd6a6a72ed627c",
+            "reference": "c0c92082a2ffef8fab7941d4f6fd6a6a72ed627c",
             "shasum": ""
         },
         "require": {
@@ -1021,7 +960,7 @@
             "phpunit/phpunit": "^4.6",
             "sebastian/version": "^1.0.1"
         },
-        "time": "2016-10-10 07:45:47",
+        "time": "2016-10-17 06:50:33",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1661,67 +1600,6 @@
         ]
     },
     {
-        "name": "phpunit/phpunit-mock-objects",
-        "version": "3.3.1",
-        "version_normalized": "3.3.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-            "reference": "03500345483e1e17b52e2e4d34a89c9408ab2902"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/03500345483e1e17b52e2e4d34a89c9408ab2902",
-            "reference": "03500345483e1e17b52e2e4d34a89c9408ab2902",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/instantiator": "^1.0.2",
-            "php": "^5.6 || ^7.0",
-            "phpunit/php-text-template": "^1.2",
-            "sebastian/exporter": "^1.2"
-        },
-        "conflict": {
-            "phpunit/phpunit": "<5.4.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^5.4"
-        },
-        "suggest": {
-            "ext-soap": "*"
-        },
-        "time": "2016-10-04 11:03:26",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sb@sebastian-bergmann.de",
-                "role": "lead"
-            }
-        ],
-        "description": "Mock Object library for PHPUnit",
-        "homepage": "https://github.com/sebastianbergmann/phpunit-mock-objects/",
-        "keywords": [
-            "mock",
-            "xunit"
-        ]
-    },
-    {
         "name": "phpunit/php-timer",
         "version": "1.0.8",
         "version_normalized": "1.0.8.0",
@@ -1894,6 +1772,297 @@
             "phpunit",
             "testing",
             "xunit"
+        ]
+    },
+    {
+        "name": "airbrake/phpbrake",
+        "version": "v0.2.0",
+        "version_normalized": "0.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/airbrake/phpbrake.git",
+            "reference": "a96197b7dbe5ec6d7ffba9fdd2f1f3206d6682a9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/airbrake/phpbrake/zipball/a96197b7dbe5ec6d7ffba9fdd2f1f3206d6682a9",
+            "reference": "a96197b7dbe5ec6d7ffba9fdd2f1f3206d6682a9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "require-dev": {
+            "guzzlehttp/guzzle": "^6.2",
+            "monolog/monolog": "^1.16.0",
+            "phpunit/phpunit": "^4.8.0",
+            "squizlabs/php_codesniffer": "^2.5.1"
+        },
+        "suggest": {
+            "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
+        },
+        "time": "2016-07-21 11:56:30",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Airbrake\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Airbrake exception and error notifier for PHP",
+        "homepage": "https://airbrake.io",
+        "keywords": [
+            "airbrake",
+            "error",
+            "exception",
+            "logging",
+            "notifier"
+        ]
+    },
+    {
+        "name": "maknz/slack",
+        "version": "1.7.0",
+        "version_normalized": "1.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/maknz/slack.git",
+            "reference": "7f21fefc70c76b304adc1b3a780c8740dfcfb595"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/maknz/slack/zipball/7f21fefc70c76b304adc1b3a780c8740dfcfb595",
+            "reference": "7f21fefc70c76b304adc1b3a780c8740dfcfb595",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "guzzlehttp/guzzle": "~6.0|~5.0|~4.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.9.*",
+            "phpunit/phpunit": "4.2.*"
+        },
+        "suggest": {
+            "illuminate/support": "Required for Laravel support"
+        },
+        "time": "2015-06-03 03:35:16",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Maknz\\Slack\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "maknz",
+                "email": "github@mak.geek.nz"
+            }
+        ],
+        "description": "A simple PHP package for sending messages to Slack, with a focus on ease of use and elegant syntax. Includes Laravel support out of the box.",
+        "keywords": [
+            "laravel",
+            "slack"
+        ]
+    },
+    {
+        "name": "beberlei/assert",
+        "version": "2.6.5",
+        "version_normalized": "2.6.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/beberlei/assert.git",
+            "reference": "fbadde44717ea3eb98fba35425d49731185bf418"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/beberlei/assert/zipball/fbadde44717ea3eb98fba35425d49731185bf418",
+            "reference": "fbadde44717ea3eb98fba35425d49731185bf418",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=5.3"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "2.0.0-alpha",
+            "phpunit/phpunit": "@stable"
+        },
+        "time": "2016-10-11 17:13:28",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Assert": "lib/"
+            },
+            "files": [
+                "lib/Assert/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Richard Quadling",
+                "email": "rquadling@gmail.com",
+                "role": "Collaborator"
+            }
+        ],
+        "description": "Thin assertion library for input validation in business models.",
+        "keywords": [
+            "assert",
+            "assertion",
+            "validation"
+        ]
+    },
+    {
+        "name": "phpunit/phpunit-mock-objects",
+        "version": "3.4.0",
+        "version_normalized": "3.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
+            "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/238d7a2723bce689c79eeac9c7d5e1d623bb9dc2",
+            "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/instantiator": "^1.0.2",
+            "php": "^5.6 || ^7.0",
+            "phpunit/php-text-template": "^1.2",
+            "sebastian/exporter": "^1.2"
+        },
+        "conflict": {
+            "phpunit/phpunit": "<5.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5.4"
+        },
+        "suggest": {
+            "ext-soap": "*"
+        },
+        "time": "2016-10-09 07:01:45",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sb@sebastian-bergmann.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Mock Object library for PHPUnit",
+        "homepage": "https://github.com/sebastianbergmann/phpunit-mock-objects/",
+        "keywords": [
+            "mock",
+            "xunit"
+        ]
+    },
+    {
+        "name": "emgiezet/errbit-php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/emgiezet/errbitPHP.git",
+            "reference": "cc634f8d6b0d2cd4a29648662119310afc73fa7b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/emgiezet/errbitPHP/zipball/cc634f8d6b0d2cd4a29648662119310afc73fa7b",
+            "reference": "cc634f8d6b0d2cd4a29648662119310afc73fa7b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "replace": {
+            "flippa-official/errbit-php": "dev-master",
+            "nodrew/php-airbrake": "dev-master"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.9.4",
+            "phpunit/phpcov": "2.0.*@dev",
+            "phpunit/phpunit": "4.*",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2016-06-17 14:32:49",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Errbit\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "emgiezet"
+            },
+            {
+                "name": "flippa"
+            },
+            {
+                "name": "karolsojko"
+            },
+            {
+                "name": "deathowl"
+            }
+        ],
+        "description": "errbit/airbrake integration with php with psr-2",
+        "homepage": "http://github.com/emgiezet/errbitPHP",
+        "keywords": [
+            "airbrake",
+            "errbit",
+            "errbit php",
+            "error tracking"
         ]
     }
 ]

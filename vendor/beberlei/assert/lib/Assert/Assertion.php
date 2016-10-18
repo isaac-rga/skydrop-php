@@ -21,6 +21,8 @@ use BadMethodCallException;
  * @author Benjamin Eberlei <kontakt@beberlei.de>
  *
  * @method static void allAlnum($value, $message = null, $propertyPath = null) Assert that value is alphanumeric for all values.
+ * @method static void allBetween($value, $lowerLimit, $upperLimit, $message = null, $propertyPath = null) Assert that a value is greater or equal than a lower limit, and less than or equal to an upper limit for all values.
+ * @method static void allBetweenExclusive($value, $lowerLimit, $upperLimit, $message = null, $propertyPath = null) Assert that a value is greater than a lower limit, and less than an upper limit for all values.
  * @method static void allBetweenLength($value, $minLength, $maxLength, $message = null, $propertyPath = null, $encoding = "utf8") Assert that string length is between min,max lengths for all values.
  * @method static void allBoolean($value, $message = null, $propertyPath = null) Assert that value is php boolean for all values.
  * @method static void allChoice($value, $choices, $message = null, $propertyPath = null) Assert that value is in array of choices for all values.
@@ -91,6 +93,8 @@ use BadMethodCallException;
  * @method static void allUuid($value, $message = null, $propertyPath = null) Assert that the given string is a valid UUID for all values.
  * @method static void allWriteable($value, $message = null, $propertyPath = null) Assert that the value is something writeable for all values.
  * @method static void nullOrAlnum($value, $message = null, $propertyPath = null) Assert that value is alphanumeric or that the value is null.
+ * @method static void nullOrBetween($value, $lowerLimit, $upperLimit, $message = null, $propertyPath = null) Assert that a value is greater or equal than a lower limit, and less than or equal to an upper limit or that the value is null.
+ * @method static void nullOrBetweenExclusive($value, $lowerLimit, $upperLimit, $message = null, $propertyPath = null) Assert that a value is greater than a lower limit, and less than an upper limit or that the value is null.
  * @method static void nullOrBetweenLength($value, $minLength, $maxLength, $message = null, $propertyPath = null, $encoding = "utf8") Assert that string length is between min,max lengths or that the value is null.
  * @method static void nullOrBoolean($value, $message = null, $propertyPath = null) Assert that value is php boolean or that the value is null.
  * @method static void nullOrChoice($value, $choices, $message = null, $propertyPath = null) Assert that value is in array of choices or that the value is null.
@@ -227,18 +231,28 @@ class Assertion
     const INVALID_KEY_NOT_EXISTS    = 216;
     const INVALID_SATISFY           = 217;
     const INVALID_IP                = 218;
+    const INVALID_BETWEEN           = 219;
+    const INVALID_BETWEEN_EXCLUSIVE = 220;
 
     /**
      * Exception to throw when an assertion failed.
      *
      * @var string
      */
-    static protected $exceptionClass = 'Assert\InvalidArgumentException';
+    protected static $exceptionClass = 'Assert\InvalidArgumentException';
 
     /**
      * Helper method that handles building the assertion failure exceptions.
      * They are returned from this method so that the stack trace still shows
      * the assertions method.
+     *
+     * @param mixed $value
+     * @param string $message
+     * @param int $code
+     * @param string|null $propertyPath
+     * @param array $constraints
+     *
+     * @return mixed
      */
     protected static function createException($value, $message, $code, $propertyPath, array $constraints = array())
     {
@@ -310,7 +324,7 @@ class Assertion
                 static::stringify($value1),
                 static::stringify($value2)
             );
-            throw static::createException($value1, $message,static::INVALID_NOT_EQ, $propertyPath, array('expected' => $value2));
+            throw static::createException($value1, $message, static::INVALID_NOT_EQ, $propertyPath, array('expected' => $value2));
         }
     }
 
@@ -369,7 +383,7 @@ class Assertion
      */
     public static function integer($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_int($value)) {
+        if (! is_int($value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not an integer.',
                 static::stringify($value)
@@ -390,7 +404,7 @@ class Assertion
      */
     public static function float($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_float($value)) {
+        if (! is_float($value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not a float.',
                 static::stringify($value)
@@ -411,7 +425,7 @@ class Assertion
      */
     public static function digit($value, $message = null, $propertyPath = null)
     {
-        if ( ! ctype_digit((string)$value)) {
+        if (! ctype_digit((string)$value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not a digit.',
                 static::stringify($value)
@@ -453,7 +467,7 @@ class Assertion
      */
     public static function boolean($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_bool($value)) {
+        if (! is_bool($value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not a boolean.',
                 static::stringify($value)
@@ -579,7 +593,7 @@ class Assertion
      */
     public static function string($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_string($value)) {
+        if (! is_string($value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" expected to be string, type %s given.',
                 static::stringify($value),
@@ -604,13 +618,13 @@ class Assertion
     {
         static::string($value, $message, $propertyPath);
 
-        if ( ! preg_match($pattern, $value)) {
+        if (! preg_match($pattern, $value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" does not match expression.',
                 static::stringify($value)
             );
 
-            throw static::createException($value, $message, static::INVALID_REGEX , $propertyPath, array('pattern' => $pattern));
+            throw static::createException($value, $message, static::INVALID_REGEX, $propertyPath, array('pattern' => $pattern));
         }
     }
 
@@ -834,7 +848,7 @@ class Assertion
      */
     public static function choice($value, array $choices, $message = null, $propertyPath = null)
     {
-        if ( ! in_array($value, $choices, true)) {
+        if (! in_array($value, $choices, true)) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not an element of the valid values: %s',
                 static::stringify($value),
@@ -848,7 +862,10 @@ class Assertion
     /**
      * Alias of {@see choice()}
      *
-     * @throws \Assert\AssertionFailedException
+     * @param mixed $value
+     * @param array $choices
+     * @param string|null $message
+     * @param string|null $propertyPath
      */
     public static function inArray($value, array $choices, $message = null, $propertyPath = null)
     {
@@ -866,7 +883,7 @@ class Assertion
      */
     public static function numeric($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_numeric($value)) {
+        if (! is_numeric($value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not numeric.',
                 static::stringify($value)
@@ -887,7 +904,7 @@ class Assertion
      */
     public static function isArray($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_array($value)) {
+        if (! is_array($value)) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not an array.',
                 static::stringify($value)
@@ -908,7 +925,7 @@ class Assertion
      */
     public static function isTraversable($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_array($value) && ! $value instanceof \Traversable) {
+        if (! is_array($value) && ! $value instanceof \Traversable) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not an array and does not implement Traversable.',
                 static::stringify($value)
@@ -929,7 +946,7 @@ class Assertion
      */
     public static function isArrayAccessible($value, $message = null, $propertyPath = null)
     {
-        if ( ! is_array($value) && ! $value instanceof \ArrayAccess) {
+        if (! is_array($value) && ! $value instanceof \ArrayAccess) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not an array and does not implement ArrayAccess.',
                 static::stringify($value)
@@ -953,7 +970,7 @@ class Assertion
     {
         static::isArray($value, $message, $propertyPath);
 
-        if ( ! array_key_exists($key, $value)) {
+        if (! array_key_exists($key, $value)) {
             $message = sprintf(
                 $message ?: 'Array does not contain an element with key "%s"',
                 static::stringify($key)
@@ -1001,7 +1018,7 @@ class Assertion
     {
         static::isArrayAccessible($value, $message, $propertyPath);
 
-        if ( ! isset($value[$key])) {
+        if (! isset($value[$key])) {
             $message = sprintf(
                 $message ?: 'The element with key "%s" was not found',
                 static::stringify($key)
@@ -1060,7 +1077,7 @@ class Assertion
      */
     public static function isInstanceOf($value, $className, $message = null, $propertyPath = null)
     {
-        if ( ! ($value instanceof $className)) {
+        if (! ($value instanceof $className)) {
             $message = sprintf(
                 $message ?: 'Class "%s" was expected to be instanceof of "%s" but is not.',
                 static::stringify($value),
@@ -1106,7 +1123,7 @@ class Assertion
      */
     public static function subclassOf($value, $className, $message = null, $propertyPath = null)
     {
-        if ( ! is_subclass_of($value, $className)) {
+        if (! is_subclass_of($value, $className)) {
             $message = sprintf(
                 $message ?: 'Class "%s" was expected to be subclass of "%s".',
                 static::stringify($value),
@@ -1208,7 +1225,7 @@ class Assertion
         static::string($value, $message, $propertyPath);
         static::notEmpty($value, $message, $propertyPath);
 
-        if ( ! is_file($value)) {
+        if (! is_file($value)) {
             $message = sprintf(
                 $message ?: 'File "%s" was expected to exist.',
                 static::stringify($value)
@@ -1231,7 +1248,7 @@ class Assertion
     {
         static::string($value, $message, $propertyPath);
 
-        if ( ! is_dir($value)) {
+        if (! is_dir($value)) {
             $message = sprintf(
                 $message ?: 'Path "%s" was expected to be a directory.',
                 static::stringify($value)
@@ -1254,7 +1271,7 @@ class Assertion
     {
         static::string($value, $message, $propertyPath);
 
-        if ( ! is_readable($value)) {
+        if (! is_readable($value)) {
             $message = sprintf(
                 $message ?: 'Path "%s" was expected to be readable.',
                 static::stringify($value)
@@ -1277,7 +1294,7 @@ class Assertion
     {
         static::string($value, $message, $propertyPath);
 
-        if ( ! is_writeable($value)) {
+        if (! is_writeable($value)) {
             $message = sprintf(
                 $message ?: 'Path "%s" was expected to be writeable.',
                 static::stringify($value)
@@ -1300,7 +1317,7 @@ class Assertion
     {
         static::string($value, $message, $propertyPath);
 
-        if ( ! filter_var($value, FILTER_VALIDATE_EMAIL)) {
+        if (! filter_var($value, FILTER_VALIDATE_EMAIL)) {
             $message = sprintf(
                 $message ?: 'Value "%s" was expected to be a valid e-mail address.',
                 static::stringify($value)
@@ -1345,17 +1362,18 @@ class Assertion
 
         $pattern = '~^
             (%s)://                                 # protocol
+            (([\pL\pN-]+:)?([\pL\pN-]+)@)?          # basic auth
             (
-                ([\pL\pN\pS-]+\.)+[\pL]+                   # a domain name
-                    |                                     #  or
-                \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}      # a IP address
-                    |                                     #  or
+                ([\pL\pN\pS-\.])+(\.?([\pL\pN]|xn\-\-[\pL\pN-]+)+\.?) # a domain name
+                    |                                                 # or
+                \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}                    # an IP address
+                    |                                                 # or
                 \[
                     (?:(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-f]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-f]{1,4})))?::(?:(?:(?:[0-9a-f]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,1}(?:(?:[0-9a-f]{1,4})))?::(?:(?:(?:[0-9a-f]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,2}(?:(?:[0-9a-f]{1,4})))?::(?:(?:(?:[0-9a-f]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,3}(?:(?:[0-9a-f]{1,4})))?::(?:(?:[0-9a-f]{1,4})):)(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,4}(?:(?:[0-9a-f]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,5}(?:(?:[0-9a-f]{1,4})))?::)(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,6}(?:(?:[0-9a-f]{1,4})))?::))))
-                \]  # a IPv6 address
+                \]  # an IPv6 address
             )
             (:[0-9]+)?                              # a port (optional)
-            (/?|/\S+)                               # a /, nothing or a / with something
+            (/?|/\S+|\?\S*|\#\S*)                   # a /, nothing, a / with something, a query or a fragment
         $~ixu';
 
         $pattern = sprintf($pattern, implode('|', $protocols));
@@ -1368,7 +1386,6 @@ class Assertion
 
             throw static::createException($value, $message, static::INVALID_URL, $propertyPath);
         }
-
     }
 
     /**
@@ -1384,7 +1401,7 @@ class Assertion
     {
         try {
             static::regex($value, '(^([a-zA-Z]{1}[a-zA-Z0-9]*)$)', $message, $propertyPath);
-        } catch(AssertionFailedException $e) {
+        } catch (AssertionFailedException $e) {
             $message = sprintf(
                 $message ?: 'Value "%s" is not alphanumeric, starting with letters and containing only letters and numbers.',
                 static::stringify($value)
@@ -1447,7 +1464,7 @@ class Assertion
      */
     public static function classExists($value, $message = null, $propertyPath = null)
     {
-        if ( ! class_exists($value)) {
+        if (! class_exists($value)) {
             $message = sprintf(
                 $message ?: 'Class "%s" does not exist.',
                 static::stringify($value)
@@ -1468,7 +1485,7 @@ class Assertion
      */
     public static function interfaceExists($value, $message = null, $propertyPath = null)
     {
-        if ( ! class_exists($value)) {
+        if (! class_exists($value)) {
             $message = sprintf(
                 $message ?: 'Interface "%s" does not exist.',
                 static::stringify($value)
@@ -1491,7 +1508,7 @@ class Assertion
     public static function implementsInterface($class, $interfaceName, $message = null, $propertyPath = null)
     {
         $reflection = new \ReflectionClass($class);
-        if ( ! $reflection->implementsInterface($interfaceName)) {
+        if (! $reflection->implementsInterface($interfaceName)) {
             $message = sprintf(
                 $message ?: 'Class "%s" does not implement interface "%s".',
                 static::stringify($class),
@@ -1607,11 +1624,16 @@ class Assertion
      * static call handler to implement:
      *  - "null or assertion" delegation
      *  - "all" delegation
+     *
+     * @param string $method
+     * @param array $args
+     *
+     * @return bool|mixed
      */
     public static function __callStatic($method, $args)
     {
         if (strpos($method, "nullOr") === 0) {
-            if ( ! array_key_exists(0, $args)) {
+            if (! array_key_exists(0, $args)) {
                 throw new BadMethodCallException("Missing the first argument.");
             }
 
@@ -1625,7 +1647,7 @@ class Assertion
         }
 
         if (strpos($method, "all") === 0) {
-            if ( ! array_key_exists(0, $args)) {
+            if (! array_key_exists(0, $args)) {
                 throw new BadMethodCallException("Missing the first argument.");
             }
 
@@ -1658,7 +1680,6 @@ class Assertion
         self::notEmpty($values, $message, $propertyPath);
 
         foreach ($choices as $choice) {
-
             self::notEmptyKey($values, $choice, $message, $propertyPath);
         }
     }
@@ -1703,7 +1724,6 @@ class Assertion
             );
 
             throw static::createException($value, $message, static::INVALID_OBJECT, $propertyPath);
-
         }
     }
 
@@ -1788,6 +1808,52 @@ class Assertion
             );
 
             throw static::createException($value, $message, static::INVALID_GREATER_OR_EQUAL, $propertyPath);
+        }
+    }
+
+    /**
+     * Assert that a value is greater or equal than a lower limit, and less than or equal to an upper limit.
+     *
+     * @param mixed $value
+     * @param mixed $lowerLimit
+     * @param mixed $upperLimit
+     * @param string $message
+     * @param string $propertyPath
+     */
+    public static function between($value, $lowerLimit, $upperLimit, $message = null, $propertyPath = null)
+    {
+        if ($lowerLimit > $value || $value > $upperLimit) {
+            $message = sprintf(
+                $message ?: 'Provided "%s" is neither greater than or equal to "%s" nor less than or equal to "%s".',
+                static::stringify($value),
+                static::stringify($lowerLimit),
+                static::stringify($upperLimit)
+            );
+
+            throw static::createException($value, $message, static::INVALID_BETWEEN, $propertyPath);
+        }
+    }
+
+    /**
+     * Assert that a value is greater than a lower limit, and less than an upper limit.
+     *
+     * @param mixed $value
+     * @param mixed $lowerLimit
+     * @param mixed $upperLimit
+     * @param string $message
+     * @param string $propertyPath
+     */
+    public static function betweenExclusive($value, $lowerLimit, $upperLimit, $message = null, $propertyPath = null)
+    {
+        if ($lowerLimit >= $value || $value >= $upperLimit) {
+            $message = sprintf(
+                $message ?: 'Provided "%s" is neither greater than "%s" nor less than "%s".',
+                static::stringify($value),
+                static::stringify($lowerLimit),
+                static::stringify($upperLimit)
+            );
+
+            throw static::createException($value, $message, static::INVALID_BETWEEN_EXCLUSIVE, $propertyPath);
         }
     }
 
@@ -1952,7 +2018,7 @@ class Assertion
             return '<RESOURCE>';
         }
 
-        if ($value === NULL) {
+        if ($value === null) {
             return '<NULL>';
         }
 

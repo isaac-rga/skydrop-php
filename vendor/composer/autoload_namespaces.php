@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'Errbit\\' => array($vendorDir . '/emgiezet/errbit-php/src'),
     'Assert' => array($vendorDir . '/beberlei/assert/lib'),
 );

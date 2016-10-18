@@ -9,9 +9,9 @@ class ComposerStaticInit2fc1c14141e92ad78f89dc46cbe89f0b
     public static $files = array (
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4ecaeafb8cfb009ad0e052c90355e98' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/functions.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -38,6 +38,10 @@ class ComposerStaticInit2fc1c14141e92ad78f89dc46cbe89f0b
         array (
             'Psr\\Http\\Message\\' => 17,
         ),
+        'M' => 
+        array (
+            'Maknz\\Slack\\' => 12,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -48,6 +52,10 @@ class ComposerStaticInit2fc1c14141e92ad78f89dc46cbe89f0b
         array (
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
+        ),
+        'A' => 
+        array (
+            'Airbrake\\' => 9,
         ),
     );
 
@@ -86,6 +94,10 @@ class ComposerStaticInit2fc1c14141e92ad78f89dc46cbe89f0b
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'Maknz\\Slack\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maknz/slack/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -106,6 +118,10 @@ class ComposerStaticInit2fc1c14141e92ad78f89dc46cbe89f0b
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Airbrake\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/airbrake/phpbrake/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -114,6 +130,13 @@ class ComposerStaticInit2fc1c14141e92ad78f89dc46cbe89f0b
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+        ),
+        'E' => 
+        array (
+            'Errbit\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/emgiezet/errbit-php/src',
             ),
         ),
         'A' => 
