@@ -14,6 +14,7 @@ class ShippingRateBuilder
     {
         $this->origin      = $this->getFromArray('origin', $args, '');
         $this->destination = $this->getFromArray('destination', $args, '');
+        $this->items       = $this->getFromArray('items', $args, '');
     }
 
     public function toHash()
@@ -21,7 +22,8 @@ class ShippingRateBuilder
         return array(
             'rate' => array_merge(
                 $this->origin->toHash('origin'),
-                $this->destination->toHash('destination')
+                $this->destination->toHash('destination'),
+                ['items' => $this->items]
             )
         );
     }

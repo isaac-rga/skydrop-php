@@ -55,7 +55,12 @@ class Search
             $this->rules
         );
 
-        return count(array_unique($rules));
+        foreach ($rules as $rule) {
+            if (!$rule) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public function getRawRates()
