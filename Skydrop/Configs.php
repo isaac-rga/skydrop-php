@@ -159,7 +159,7 @@ abstract class Configs
     {
         $settings = [
             'username' => 'Skydrop PHP SDK',
-            'channel' => '#exceptions',
+            'channel' => '#pedidos-fallidos',
             'link_names' => true
         ];
 
