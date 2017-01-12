@@ -8,7 +8,7 @@ Require the skydrop-php in your composer.json:
 ```json
 {
     "require": {
-        "skydropx/skydrop-php": "1.0.*"
+        "skydrop/php": "^1.0"
     }
 }
 ```
