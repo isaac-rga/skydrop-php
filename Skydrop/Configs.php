@@ -7,7 +7,7 @@ require_once 'Tools/ArrayTools.php';
 abstract class Configs
 {
     const PRODUCTION_URL = 'http://www.skydrop.com.mx/api/v2';
-    const STAGING_URL = 'http://54.191.139.107/api/v2';
+    const STAGING_URL = 'http://35.165.118.69/api/v2';
     public static $apiKey;
     public static $env                = 'production';
     public static $slackHook          = 'https://hooks.slack.com/services/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';
